@@ -1,5 +1,9 @@
 "
-A client for fogbugz
+A client for Pharo Fogbugz issue server.
+
+https://pharo.fogbugz.com/f/
+
+See class side example methods
 "
 Class {
 	#name : #FogBugzClient,
@@ -10,6 +14,15 @@ Class {
 	],
 	#category : #'FogBugz-Core-Base'
 }
+
+{ #category : #examples }
+FogBugzClient class >> example [
+	
+	|client|
+	client := FogBugzClient loginUser: 'abc@def.com' password: 'secret'.
+	(client query: 'UFFI') inspect.
+	client logout
+]
 
 { #category : #'instance creation' }
 FogBugzClient class >> loginUser: email password: password [
