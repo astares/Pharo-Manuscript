@@ -61,8 +61,7 @@ FogBugzClient >> login: email password: password [
 	ston := self executeCommand: (FGBLoginCommand loginUser: email password: password).
 	(ston at: #data)
 		ifEmpty: [ self readErrorsFrom: ston ]
-		ifNotEmptyDo: [ :x | 
-			ston inspect.
+		ifNotEmptyDo: [ :x | 			 
 			token := x at: #token ]
 ]
 
