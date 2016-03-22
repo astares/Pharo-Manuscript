@@ -91,7 +91,7 @@ FogBugzBrowser >> iconProvider [
 { #category : #initialization }
 FogBugzBrowser >> initialExtent [
 
-	^800@500
+	^530@360
 ]
 
 { #category : #'private - initialization' }
