@@ -2,7 +2,7 @@
 Login dialog
 "
 Class {
-	#name : #FBLoginDialogModel,
+	#name : #FGBLoginDialogModel,
 	#superclass : #ComposableModel,
 	#instVars : [
 		'usernameLabel',
@@ -14,7 +14,7 @@ Class {
 }
 
 { #category : #specs }
-FBLoginDialogModel class >> defaultSpec [
+FGBLoginDialogModel class >> defaultSpec [
   <spec: #default>
 
   ^ SpecLayout composed
@@ -34,7 +34,7 @@ FBLoginDialogModel class >> defaultSpec [
 ]
 
 { #category : #'instance creation' }
-FBLoginDialogModel class >> getCredentials [
+FGBLoginDialogModel class >> getCredentials [
 	"self getCredentials"
 	<script>
 	
@@ -47,18 +47,18 @@ FBLoginDialogModel class >> getCredentials [
 ]
 
 { #category : #defaults }
-FBLoginDialogModel >> credentials [
+FGBLoginDialogModel >> credentials [
   ^ usernameField text -> passwordField text
 
 ]
 
 { #category : #defaults }
-FBLoginDialogModel >> initialExtent [
+FGBLoginDialogModel >> initialExtent [
   ^ 350 @ 150
 ]
 
 { #category : #'initialization widgets' }
-FBLoginDialogModel >> initializeWidgets [
+FGBLoginDialogModel >> initializeWidgets [
   usernameLabel := self newLabel.
   usernameLabel label: 'Username'.
   usernameField := self newTextInput.
@@ -71,46 +71,46 @@ FBLoginDialogModel >> initializeWidgets [
 ]
 
 { #category : #accessing }
-FBLoginDialogModel >> passwordField [
+FGBLoginDialogModel >> passwordField [
 	^ passwordField
 ]
 
 { #category : #accessing }
-FBLoginDialogModel >> passwordField: anObject [
+FGBLoginDialogModel >> passwordField: anObject [
 	passwordField := anObject
 ]
 
 { #category : #accessing }
-FBLoginDialogModel >> passwordLabel [
+FGBLoginDialogModel >> passwordLabel [
 	^ passwordLabel
 ]
 
 { #category : #accessing }
-FBLoginDialogModel >> passwordLabel: anObject [
+FGBLoginDialogModel >> passwordLabel: anObject [
 	passwordLabel := anObject
 ]
 
 { #category : #defaults }
-FBLoginDialogModel >> title [
+FGBLoginDialogModel >> title [
   ^ 'Login'
 ]
 
 { #category : #accessing }
-FBLoginDialogModel >> usernameField [
+FGBLoginDialogModel >> usernameField [
 	^ usernameField
 ]
 
 { #category : #accessing }
-FBLoginDialogModel >> usernameField: anObject [
+FGBLoginDialogModel >> usernameField: anObject [
 	usernameField := anObject
 ]
 
 { #category : #accessing }
-FBLoginDialogModel >> usernameLabel [
+FGBLoginDialogModel >> usernameLabel [
 	^ usernameLabel
 ]
 
 { #category : #accessing }
-FBLoginDialogModel >> usernameLabel: anObject [
+FGBLoginDialogModel >> usernameLabel: anObject [
 	usernameLabel := anObject
 ]
