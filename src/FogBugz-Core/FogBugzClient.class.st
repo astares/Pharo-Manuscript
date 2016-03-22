@@ -32,7 +32,13 @@ FogBugzClient class >> loginUser: email password: password [
 		yourself
 ]
 
-{ #category : #private }
+{ #category : #'private - accessing' }
+FogBugzClient >> errors [
+
+	^errors 
+]
+
+{ #category : #'private - utilities' }
 FogBugzClient >> executeCommand: aCommand [
 	errors := nil.
 	aCommand requiresSession ifTrue: [ 
@@ -86,7 +92,14 @@ FogBugzClient >> query: aString [
 	^#()
 ]
 
-{ #category : #private }
+{ #category : #'private - utilities' }
 FogBugzClient >> readErrorsFrom: ston [
 	errors := (ston at: #errors) collect: [ :each | each at: #message ]
+]
+
+{ #category : #accessing }
+FogBugzClient >> summarizedErrors [
+
+	^String streamContents: [:s | 
+		self errors do: [:each | s nextPutAll: each; cr ]	]
 ]
