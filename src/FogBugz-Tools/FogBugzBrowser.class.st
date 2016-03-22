@@ -7,7 +7,9 @@ Class {
 	#instVars : [
 		'client',
 		'caseModel',
-		'toolBar'
+		'toolBar',
+		'mainMenu',
+		'statusBar'
 	],
 	#category : #'FogBugz-Tools-UI'
 }
@@ -26,12 +28,27 @@ FogBugzBrowser class >> contentSpec [
 { #category : #spec }
 FogBugzBrowser class >> defaultSpec [
 	<spec>
-	
 	^ SpecLayout composed
-		newColumn: [ :c | 
-			c 
-				add: #toolBar height: self toolbarHeight;
-				add: self contentSpec ];	
+		add: #mainMenu
+			origin: 0 @ 0
+			corner: 1 @ 0
+			offsetOrigin: 0 @ 0
+			offsetCorner: 0 @ self toolbarHeight;
+		add: #toolBar
+			origin: 0 @ 0
+			corner: 1 @ 0
+			offsetOrigin: 0 @ self toolbarHeight
+			offsetCorner: 0 @ (self toolbarHeight + (self toolbarHeight + 4));
+		add: #statusBar
+			origin: 0 @ 1
+			corner: 1 @ 1
+			offsetOrigin: 0 @ (0 - self statusBarHeight)
+			offsetCorner: 0 @ 0;
+		add: self contentSpec
+			origin: 0 @ 0
+			corner: 1 @ 1
+			offsetOrigin: 0 @ (self toolbarHeight + (self toolbarHeight + 4))
+			offsetCorner: 0 @ (0 - self statusBarHeight);
 		yourself
 ]
 
@@ -58,6 +75,12 @@ FogBugzBrowser class >> open [
 	(self basicNew)	 
 		initialize;
 		openWithSpec 
+]
+
+{ #category : #defaults }
+FogBugzBrowser class >> statusBarHeight [
+
+	^ StandardFonts defaultFont height + 2
 ]
 
 { #category : #'private - accessing' }
@@ -88,10 +111,31 @@ FogBugzBrowser >> iconProvider [
 	^FGBIconCache 
 ]
 
+{ #category : #'private - initialization' }
+FogBugzBrowser >> initalFogBugzMenu [
+	|builder|
+	builder := FGBMenuBuilder new.
+	builder
+		addItem: 'Login'
+		icon: self iconProvider fogBugzLoginIcon 
+		action: [ self login ].
+	^builder menu	
+]
+
 { #category : #initialization }
 FogBugzBrowser >> initialExtent [
 
 	^530@360
+]
+
+{ #category : #'private - initialization' }
+FogBugzBrowser >> initializeMainMenu [
+
+	| builder |
+	builder := FGBMenuBuilder forMenu: mainMenu.
+	builder addItem: 'FogBugz' icon: nil subMenu: self initalFogBugzMenu.
+"	builder addItem: 'Edit' icon: nil subMenu: self initalEditMenu.						
+	builder addItem: 'Help' icon: nil subMenu: self initalHelpMenu.	"	
 ]
 
 { #category : #'private - initialization' }
@@ -127,7 +171,9 @@ FogBugzBrowser >> initializeToolBar [
 
 { #category : #'initialization widgets' }
 FogBugzBrowser >> initializeWidgets [
-	self initializeToolBar.
+	self 
+		initializeMainMenu; 		
+		initializeToolBar.	
 	caseModel := self instantiate: IconListModel.
 ]
 
@@ -149,10 +195,30 @@ FogBugzBrowser >> logout [
 		client logout ].
 ]
 
+{ #category : #accessing }
+FogBugzBrowser >> mainMenu [
+	^ mainMenu
+]
+
+{ #category : #accessing }
+FogBugzBrowser >> mainMenu: anObject [
+	mainMenu := anObject
+]
+
 { #category : #'private - actions' }
 FogBugzBrowser >> search [
 
 	 
+]
+
+{ #category : #accessing }
+FogBugzBrowser >> statusBar [
+	^ statusBar
+]
+
+{ #category : #accessing }
+FogBugzBrowser >> statusBar: anObject [
+	statusBar := anObject
 ]
 
 { #category : #accessing }
