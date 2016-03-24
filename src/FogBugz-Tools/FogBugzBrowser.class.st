@@ -92,7 +92,8 @@ FogBugzBrowser >> caseSearchAccept: aString [
 	World doOneCycle.
 	UIManager default showWaitCursorWhile: [ 
 	cases := (client query: aString) asSortedCollection ].
-	self casesModel items: cases
+	self casesModel items: cases.
+	self statusBar label: cases size asString, ' found'
 ]
 
 { #category : #'private - accessing' }
