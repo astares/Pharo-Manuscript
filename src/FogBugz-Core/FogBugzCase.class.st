@@ -17,15 +17,27 @@ FogBugzCase class >> fromDictionary: aCollection [
 	|case|
 	case := self new.
 	case 
-		id: (aCollection at: #ixBug);
+		id: (aCollection at: #ixBug) asNumber;
 		title: (aCollection at: #sTitle);
 		status: (aCollection at: #sStatus) asSymbol.
 	^case
 ]
 
+{ #category : #comparision }
+FogBugzCase >> <= anotherCase [
+
+	^self id <= anotherCase id
+]
+
 { #category : #conversion }
 FogBugzCase >> asURL [
 	^'https://pharo.fogbugz.com/f/cases/', self id asString
+]
+
+{ #category : #comparision }
+FogBugzCase >> hash [
+	self id ifNil: [ ^super hash ].
+	^self id hash
 ]
 
 { #category : #accessing }
