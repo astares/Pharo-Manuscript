@@ -111,7 +111,7 @@ FogBugzBrowser >> iconProvider [
 	^FGBIconCache 
 ]
 
-{ #category : #'private - initialization' }
+{ #category : #'private - initialization menues' }
 FogBugzBrowser >> initalFogBugzMenu [
 	|builder|
 	builder := FGBMenuBuilder new.
@@ -123,6 +123,17 @@ FogBugzBrowser >> initalFogBugzMenu [
 		addItem: 'Logout'
 		icon: self iconProvider fogBugzLogoutIcon 
 		action: [ self logout ].	
+	^builder menu	
+]
+
+{ #category : #'private - initialization menues' }
+FogBugzBrowser >> initalQueryMenu [
+	|builder|
+	builder := FGBMenuBuilder new.
+	builder
+		addItem: 'Search'
+		icon: self iconProvider fogBugzSearchIcon 
+		action: [ self search ].
 	^builder menu	
 ]
 
@@ -145,8 +156,8 @@ FogBugzBrowser >> initializeMainMenu [
 	mainMenu := MenuModel new.
 	builder := FGBMenuBuilder forMenu: mainMenu.
 	builder addItem: 'FogBugz' icon: nil subMenu: self initalFogBugzMenu.
-"	builder addItem: 'Edit' icon: nil subMenu: self initalEditMenu.						
-	builder addItem: 'Help' icon: nil subMenu: self initalHelpMenu.	"	
+	builder addItem: 'Query' icon: nil subMenu: self initalQueryMenu.						
+	"builder addItem: 'Help' icon: nil subMenu: self initalHelpMenu.	"	
 ]
 
 { #category : #'private - initialization' }
