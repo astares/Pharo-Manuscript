@@ -6,7 +6,8 @@ Class {
 	#superclass : #ComposableModel,
 	#instVars : [
 		'client',
-		'caseModel',
+		'cases',
+		'casesModel',
 		'toolBar',
 		'mainMenu',
 		'statusBar'
@@ -21,7 +22,7 @@ FogBugzBrowser class >> contentSpec [
 	searchBarOffset := 5 + StandardFonts defaultFont height + 10.
 	delta := 25.
 	^SpecLayout composed 
-		add: #caseModel origin: 0@0 corner: 1@1 offsetOrigin: 0@searchBarOffset offsetCorner: 0@0;
+		add: #casesModel origin: 0@0 corner: 1@1 offsetOrigin: 0@searchBarOffset offsetCorner: 0@0;
 		add: #caseSearchField origin: 0@0 corner: 1@0 offsetOrigin: 0@0 offsetCorner: 0@searchBarOffset
 ]
 
@@ -83,15 +84,15 @@ FogBugzBrowser class >> statusBarHeight [
 	^ StandardFonts defaultFont height + 2
 ]
 
-{ #category : #'private - accessing' }
-FogBugzBrowser >> caseModel [
+{ #category : #events }
+FogBugzBrowser >> caseSearchAccept: aString [ 
 
-	^caseModel
-]
-
-{ #category : #'private - accessing' }
-FogBugzBrowser >> caseModel: anObject [
-	caseModel := anObject
+	client ifNil: [ ^self ].
+	self casesModel items: OrderedCollection new.
+	World doOneCycle.
+	UIManager default showWaitCursorWhile: [ 
+	cases := (client query: aString) asSortedCollection ].
+	self casesModel items: cases
 ]
 
 { #category : #'private - accessing' }
@@ -99,10 +100,26 @@ FogBugzBrowser >> caseSearchField [
 	
 	^ SearchMorph new
 		model: self;
-		setIndexSelector: #caseSearchAccept:; 
-		updateSelector: #caseSearchAccept:;
-		searchList: #();
+		acceptSelector: #caseSearchAccept:; 		 
+		searchList: OrderedCollection new;
 		asSpecAdapter
+]
+
+{ #category : #accessing }
+FogBugzBrowser >> cases [
+	cases ifNil: [ cases := OrderedCollection new ].
+	^cases
+]
+
+{ #category : #'private - accessing' }
+FogBugzBrowser >> casesModel [
+
+	^casesModel
+]
+
+{ #category : #'private - accessing' }
+FogBugzBrowser >> casesModel: anObject [
+	casesModel := anObject
 ]
 
 { #category : #'private - accessing' }
@@ -141,12 +158,6 @@ FogBugzBrowser >> initalQueryMenu [
 FogBugzBrowser >> initialExtent [
 
 	^530@360
-]
-
-{ #category : #initialization }
-FogBugzBrowser >> initialize [
-	super initialize.
-
 ]
 
 { #category : #'private - initialization' }
@@ -205,7 +216,13 @@ FogBugzBrowser >> initializeWidgets [
 		initializeMainMenu; 		
 		initializeToolBar;
 		initializeStatusBar.
-	caseModel := self instantiate: IconListModel.
+	casesModel := self instantiate: IconListModel.
+	casesModel 
+ 		items: SortedCollection new;
+		displayBlock: [ :case | case printString ];
+		icons: [:user |  self iconProvider fogBugzIcon ]";
+		menu: [:menu | self usersListMenu: menu ];
+		whenSelectionChanged: [ self onUserSelectionChanged ]."
 ]
 
 { #category : #'private - actions' }
