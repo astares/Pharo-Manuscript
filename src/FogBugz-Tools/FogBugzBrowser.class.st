@@ -119,6 +119,10 @@ FogBugzBrowser >> initalFogBugzMenu [
 		addItem: 'Login'
 		icon: self iconProvider fogBugzLoginIcon 
 		action: [ self login ].
+	builder
+		addItem: 'Logout'
+		icon: self iconProvider fogBugzLogoutIcon 
+		action: [ self logout ].	
 	^builder menu	
 ]
 
@@ -128,14 +132,29 @@ FogBugzBrowser >> initialExtent [
 	^530@360
 ]
 
+{ #category : #initialization }
+FogBugzBrowser >> initialize [
+	super initialize.
+
+]
+
 { #category : #'private - initialization' }
 FogBugzBrowser >> initializeMainMenu [
 
 	| builder |
+	mainMenu := MenuModel new.
 	builder := FGBMenuBuilder forMenu: mainMenu.
 	builder addItem: 'FogBugz' icon: nil subMenu: self initalFogBugzMenu.
 "	builder addItem: 'Edit' icon: nil subMenu: self initalEditMenu.						
 	builder addItem: 'Help' icon: nil subMenu: self initalHelpMenu.	"	
+]
+
+{ #category : #'private - initialization' }
+FogBugzBrowser >> initializeStatusBar [
+	statusBar := LabelModel new.
+	self statusBar 
+		color: Color gray;
+		label: 'Ready'
 ]
 
 { #category : #'private - initialization' }
@@ -173,7 +192,8 @@ FogBugzBrowser >> initializeToolBar [
 FogBugzBrowser >> initializeWidgets [
 	self 
 		initializeMainMenu; 		
-		initializeToolBar.	
+		initializeToolBar;
+		initializeStatusBar.
 	caseModel := self instantiate: IconListModel.
 ]
 
@@ -185,14 +205,16 @@ FogBugzBrowser >> login [
 	cr ifNil: [ ^self ].
 	fog := FogBugzClient loginUser: cr key password: cr value.
 	fog isLoggedIn 
-		ifTrue: [ client := fog ]
+		ifTrue: [ client := fog.
+			self statusBar label: 'Connected' ]
 		ifFalse: [ self inform: fog summarizedErrors ]
 ]
 
 { #category : #'private - actions' }
 FogBugzBrowser >> logout [
 	client ifNotNil: [ 
-		client logout ].
+		client logout.
+		self statusBar label: 'Ready'  ].
 ]
 
 { #category : #accessing }

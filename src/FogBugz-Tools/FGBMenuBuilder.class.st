@@ -65,7 +65,8 @@ FGBMenuBuilder >> group [
 
 { #category : #initialization }
 FGBMenuBuilder >> initialize [
-	super initialize.
+ 
+	super initialize.	
 	menu := MenuModel new
 ]
 
