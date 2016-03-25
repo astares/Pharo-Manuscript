@@ -84,9 +84,15 @@ FogBugzBrowser class >> statusBarHeight [
 	^ StandardFonts defaultFont height + 2
 ]
 
+{ #category : #'private - actions' }
+FogBugzBrowser >> browseCase [
+
+	1 inspect
+]
+
 { #category : #'private - events' }
 FogBugzBrowser >> caseSearchAccept: aString [ 
-
+	| cases |
 	client ifNil: [ ^self ].
 	self casesModel items: OrderedCollection new.
 	World doOneCycle.
@@ -100,6 +106,16 @@ FogBugzBrowser >> caseSearchAccept: aString [
 FogBugzBrowser >> caseSearchField [
 	
 	^casesSearchField
+]
+
+{ #category : #'private - initialization' }
+FogBugzBrowser >> casesListMenu: aMenu [ 
+
+	casesModel selectedItem ifNil: [ ^nil ].
+	aMenu target: self.
+	aMenu addTitle:  'Case'.
+	aMenu add: 'Browse online' selector: #browseCase.
+	^aMenu
 ]
 
 { #category : #'private - accessing' }
@@ -158,9 +174,8 @@ FogBugzBrowser >> initializeCasesModel [
 	casesModel 
  		items: SortedCollection new;
 		displayBlock: [ :case | case printString ];
-		icons: [:user |  self iconProvider fogBugzIcon ]";
-		menu: [:menu | self usersListMenu: menu ];
-		whenSelectionChanged: [ self onUserSelectionChanged ]."
+		icons: [:user |  self iconProvider fogBugzIcon ];
+		menu: [:menu | self casesListMenu: menu ]
 ]
 
 { #category : #'private - initialization' }
@@ -251,7 +266,9 @@ FogBugzBrowser >> login [
 FogBugzBrowser >> logout [
 	client ifNotNil: [ 
 		client logout.
-		self statusBar label: 'Ready'  ].
+		self casesModel items: OrderedCollection new.
+		self statusBar label: 'Ready'. 
+		client := nil. ].
 ]
 
 { #category : #accessing }
