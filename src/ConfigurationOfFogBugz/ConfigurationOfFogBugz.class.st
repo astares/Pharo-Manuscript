@@ -1,3 +1,6 @@
+"
+A configuration for a simple tool to access Pharo FogBugz
+"
 Class {
 	#name : #ConfigurationOfFogBugz,
 	#superclass : #Object,
@@ -148,12 +151,15 @@ ConfigurationOfFogBugz >> baseline01: spec [
 		spec 
 			package: #'FogBugz-Core';
 			package: #'FogBugz-Tests-Core' with: [
+				spec requires: #(#'FogBugz-Core' ). ];
+			package: 'FogBugz-Tools' with: [
 				spec requires: #(#'FogBugz-Core' ). ].
 		spec 
-			group: 'Core' with: #('FogBugz-Core');
-			group: 'Tests' with: #('FogBugz-Tests-Core');
-			group: 'default' with: #('all');
-			group: 'all' with: #('Core' 'Tests'). ].
+			group: 'default' with: #('all' );
+			group: 'Tools' with: #('FogBugz-Tools' );
+			group: 'Tests' with: #('FogBugz-Tests-Core' );
+			group: 'all' with: #('Core' 'Tests' 'Tools' );
+			group: 'Core' with: #('FogBugz-Core' ). ].
 
 ]
 
