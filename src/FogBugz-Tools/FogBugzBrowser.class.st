@@ -86,7 +86,7 @@ FogBugzBrowser class >> statusBarHeight [
 
 { #category : #'private - actions' }
 FogBugzBrowser >> browseCase [
-	casesModel selectedItem ifNotNil: [ :case | FGBBrowserHelper openBrowserOn: case asURL ]
+	casesModel selectedItem ifNotNil: [ :case | WebBrowser openOn: case asURL ]
 ]
 
 { #category : #'private - events' }
