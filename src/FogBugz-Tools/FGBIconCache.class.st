@@ -113,7 +113,7 @@ CQggDQdhn/NkT20S5FDjfwQYAChaRsx7+Z3rAAAAAElFTkSuQmCC'
 
 { #category : #accessing }
 FGBIconCache class >> iconNamed: aSymbol [
-
+	(self class canUnderstand: aSymbol) ifFalse: [ ^super iconNamed: aSymbol ].
 	^self icons at: aSymbol ifAbsentPut: [self perform: aSymbol]
 ]
 
