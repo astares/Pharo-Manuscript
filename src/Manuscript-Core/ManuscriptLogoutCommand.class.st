@@ -2,13 +2,13 @@
 Logout from Fogbugz
 "
 Class {
-	#name : #FGBLogoutCommand,
-	#superclass : #FGBTokenCommand,
+	#name : #ManuscriptLogoutCommand,
+	#superclass : #ManuscriptTokenCommand,
 	#category : #'Manuscript-Core-Commands'
 }
 
 { #category : #printing }
-FGBLogoutCommand >> printOn: aStream [
+ManuscriptLogoutCommand >> printOn: aStream [
 
 	aStream
 		nextPutAll:

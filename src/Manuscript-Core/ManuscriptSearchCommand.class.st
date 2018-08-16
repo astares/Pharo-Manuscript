@@ -2,8 +2,8 @@
 A search command
 "
 Class {
-	#name : #FGBSearchCommand,
-	#superclass : #FGBTokenCommand,
+	#name : #ManuscriptSearchCommand,
+	#superclass : #ManuscriptTokenCommand,
 	#instVars : [
 		'query'
 	],
@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-FGBSearchCommand class >> query: query [
+ManuscriptSearchCommand class >> query: query [
 
 	^(self new)
 		query: query;
@@ -19,7 +19,7 @@ FGBSearchCommand class >> query: query [
 ]
 
 { #category : #printing }
-FGBSearchCommand >> printOn: aStream [
+ManuscriptSearchCommand >> printOn: aStream [
 
 	aStream
 		nextPutAll:
@@ -31,11 +31,11 @@ FGBSearchCommand >> printOn: aStream [
 ]
 
 { #category : #accessing }
-FGBSearchCommand >> query [
+ManuscriptSearchCommand >> query [
 	^ query
 ]
 
 { #category : #accessing }
-FGBSearchCommand >> query: anObject [
+ManuscriptSearchCommand >> query: anObject [
 	query := anObject
 ]

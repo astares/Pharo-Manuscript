@@ -2,7 +2,7 @@
 A menu builder
 "
 Class {
-	#name : #FGBMenuBuilder,
+	#name : #ManuscriptMenuBuilder,
 	#superclass : #Object,
 	#instVars : [
 		'menu'
@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-FGBMenuBuilder class >> forMenu: aMenu [
+ManuscriptMenuBuilder class >> forMenu: aMenu [
 
 	^(self new)
 		menu: aMenu;
@@ -19,7 +19,7 @@ FGBMenuBuilder class >> forMenu: aMenu [
 ]
 
 { #category : #adding }
-FGBMenuBuilder >> addItem: aName action: aBlock [
+ManuscriptMenuBuilder >> addItem: aName action: aBlock [
 	self group
 		addItem: [ :item | 
 			item
@@ -28,7 +28,7 @@ FGBMenuBuilder >> addItem: aName action: aBlock [
 ]
 
 { #category : #adding }
-FGBMenuBuilder >> addItem: aName icon: anIcon action: aBlock [
+ManuscriptMenuBuilder >> addItem: aName icon: anIcon action: aBlock [
 	self group
 		addItem: [ :item | 
 			item
@@ -38,7 +38,7 @@ FGBMenuBuilder >> addItem: aName icon: anIcon action: aBlock [
 ]
 
 { #category : #adding }
-FGBMenuBuilder >> addItem: aName icon: anIcon subMenu: aMenu [
+ManuscriptMenuBuilder >> addItem: aName icon: anIcon subMenu: aMenu [
 	self group
 		addItem: [ :item | 
 			item
@@ -48,7 +48,7 @@ FGBMenuBuilder >> addItem: aName icon: anIcon subMenu: aMenu [
 ]
 
 { #category : #adding }
-FGBMenuBuilder >> addItem: aName subMenu: aMenu [
+ManuscriptMenuBuilder >> addItem: aName subMenu: aMenu [
 	self group
 		addItem: [ :item | 
 			item
@@ -57,25 +57,25 @@ FGBMenuBuilder >> addItem: aName subMenu: aMenu [
 ]
 
 { #category : #accessing }
-FGBMenuBuilder >> group [
+ManuscriptMenuBuilder >> group [
 	^ menu menuGroups
 		ifEmpty: [ menu addGroup: [ :group |  ] ];
 		first
 ]
 
 { #category : #initialization }
-FGBMenuBuilder >> initialize [
+ManuscriptMenuBuilder >> initialize [
  
 	super initialize.	
 	menu := MenuModel new
 ]
 
 { #category : #accessing }
-FGBMenuBuilder >> menu [
+ManuscriptMenuBuilder >> menu [
 	^ menu
 ]
 
 { #category : #accessing }
-FGBMenuBuilder >> menu: aMenu [
+ManuscriptMenuBuilder >> menu: aMenu [
 	menu := aMenu
 ]

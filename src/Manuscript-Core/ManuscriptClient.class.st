@@ -6,7 +6,7 @@ https://pharo.fogbugz.com/f/
 See class side example methods
 "
 Class {
-	#name : #FogBugzClient,
+	#name : #ManuscriptClient,
 	#superclass : #Object,
 	#instVars : [
 		'token',
@@ -16,16 +16,16 @@ Class {
 }
 
 { #category : #examples }
-FogBugzClient class >> example [
+ManuscriptClient class >> example [
 	
 	|client|
-	client := FogBugzClient loginUser: 'abc@def.com' password: 'secret'.
+	client := ManuscriptClient loginUser: 'abc@def.com' password: 'secret'.
 	(client query: 'UFFI') inspect.
 	client logout
 ]
 
 { #category : #'instance creation' }
-FogBugzClient class >> loginUser: email password: password [
+ManuscriptClient class >> loginUser: email password: password [
 
 	^(self new)
 		login: email password: password;
@@ -33,13 +33,13 @@ FogBugzClient class >> loginUser: email password: password [
 ]
 
 { #category : #'private - accessing' }
-FogBugzClient >> errors [
+ManuscriptClient >> errors [
 
 	^errors 
 ]
 
 { #category : #'private - utilities' }
-FogBugzClient >> executeCommand: aCommand [
+ManuscriptClient >> executeCommand: aCommand [
 	errors := nil.
 	aCommand requiresSession ifTrue: [ 
 		aCommand token: token ].
@@ -51,54 +51,54 @@ FogBugzClient >> executeCommand: aCommand [
 ]
 
 { #category : #testing }
-FogBugzClient >> isLoggedIn [
+ManuscriptClient >> isLoggedIn [
 
 	^token notNil
 ]
 
 { #category : #'private - accessing' }
-FogBugzClient >> jsonAPILocation [
+ManuscriptClient >> jsonAPILocation [
 	^'https://pharo.fogbugz.com/f/api/0/jsonapi'
 ]
 
 { #category : #private }
-FogBugzClient >> login: email password: password [
+ManuscriptClient >> login: email password: password [
 	| ston |
 	ston := self
-		executeCommand: (FGBLoginCommand loginUser: email password: password).
+		executeCommand: (ManuscriptLoginCommand loginUser: email password: password).
 	(ston at: #data)
 		ifEmpty: [ self readErrorsFrom: ston ]
 		ifNotEmpty: [ :x | token := x at: #token ]
 ]
 
 { #category : #authentication }
-FogBugzClient >> logout [
+ManuscriptClient >> logout [
 
 	| res |
-	res := self executeCommand: FGBLogoutCommand new.
+	res := self executeCommand: ManuscriptLogoutCommand new.
 	(res at: #errorCode) isNil ifTrue: [token := nil. ^self].
 	self readErrorsFrom: res
 ]
 
 { #category : #interacting }
-FogBugzClient >> query: aString [
+ManuscriptClient >> query: aString [
 
 	| res |
-	res := self executeCommand: (FGBSearchCommand query: aString).
+	res := self executeCommand: (ManuscriptSearchCommand query: aString).
    (res at: #errorCode) ifNil: [
 		(res at: #data) ifNotEmpty: [:c |
 			^(c at: #cases) 
-				collect: [:each | FogBugzCase fromDictionary: each ]]].
+				collect: [:each | ManuscriptCase fromDictionary: each ]]].
 	^#()
 ]
 
 { #category : #'private - utilities' }
-FogBugzClient >> readErrorsFrom: ston [
+ManuscriptClient >> readErrorsFrom: ston [
 	errors := (ston at: #errors) collect: [ :each | each at: #message ]
 ]
 
 { #category : #accessing }
-FogBugzClient >> summarizedErrors [
+ManuscriptClient >> summarizedErrors [
 
 	^String streamContents: [:s | 
 		self errors do: [:each | s nextPutAll: each; cr ]	]

@@ -2,13 +2,13 @@
 A fogbugz API command
 "
 Class {
-	#name : #FGBCommand,
+	#name : #ManuscriptCommand,
 	#superclass : #Object,
 	#category : #'Manuscript-Core-Commands'
 }
 
 { #category : #testing }
-FGBCommand >> requiresSession [
+ManuscriptCommand >> requiresSession [
 
 	^false
 ]

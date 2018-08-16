@@ -2,8 +2,8 @@
 A command with a session command
 "
 Class {
-	#name : #FGBTokenCommand,
-	#superclass : #FGBCommand,
+	#name : #ManuscriptTokenCommand,
+	#superclass : #ManuscriptCommand,
 	#instVars : [
 		'token'
 	],
@@ -11,17 +11,17 @@ Class {
 }
 
 { #category : #testing }
-FGBTokenCommand >> requiresSession [
+ManuscriptTokenCommand >> requiresSession [
 
 	^true
 ]
 
 { #category : #accessing }
-FGBTokenCommand >> token [
+ManuscriptTokenCommand >> token [
 	^ token
 ]
 
 { #category : #accessing }
-FGBTokenCommand >> token: anObject [
+ManuscriptTokenCommand >> token: anObject [
 	token := anObject
 ]

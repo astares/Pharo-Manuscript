@@ -2,7 +2,7 @@
 An icon cache
 "
 Class {
-	#name : #FGBIconCache,
+	#name : #ManuscriptIconCache,
 	#superclass : #Object,
 	#classVars : [
 		'Icons'
@@ -11,14 +11,14 @@ Class {
 }
 
 { #category : #icons }
-FGBIconCache class >> fogBugzIcon [
+ManuscriptIconCache class >> fogBugzIcon [
 	^ self icons
 			at: #'fogBugzIcon'
 			ifAbsentPut: [ Form fromBinaryStream: self fogBugzIconContents base64Decoded readStream ].
 ]
 
 { #category : #'private - icons' }
-FGBIconCache class >> fogBugzIconContents [
+ManuscriptIconCache class >> fogBugzIconContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACjUlEQVR42mNkIAKI8wqpA6kw
 IO55+fndd2Q5RkKaJXiFwlRkeOqlRDnUHj7/dunhi28NLz6/20yUAdICwknxXvJzdZT44GJr
@@ -38,14 +38,14 @@ SUVORK5CYII='
 ]
 
 { #category : #icons }
-FGBIconCache class >> fogBugzLoginIcon [
+ManuscriptIconCache class >> fogBugzLoginIcon [
 	^ self icons
 			at: #'fogBugzLoginIcon'
 			ifAbsentPut: [ Form fromBinaryStream: self fogBugzLoginIconContents base64Decoded readStream ].
 ]
 
 { #category : #'private - icons' }
-FGBIconCache class >> fogBugzLoginIconContents [
+ManuscriptIconCache class >> fogBugzLoginIconContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9i
 ZSBJbWFnZVJlYWR5ccllPAAAAfNJREFUeNpi/P//PwMlgJFiA0L3PkYXiwbiOCA2AOJ/QHwJ
@@ -62,14 +62,14 @@ lgXi+0D8nuEPk+COBIkicCDazXgGc06fmDZ3DhM7E/P7e99//v7yFxyNbDzMzIIqnOy/v/79
 ]
 
 { #category : #icons }
-FGBIconCache class >> fogBugzLogoutIcon [
+ManuscriptIconCache class >> fogBugzLogoutIcon [
 	^ self icons
 			at: #'fogBugzLogoutIcon'
 			ifAbsentPut: [ Form fromBinaryStream: self fogBugzLogoutIconContents base64Decoded readStream ].
 ]
 
 { #category : #'private - icons' }
-FGBIconCache class >> fogBugzLogoutIconContents [
+ManuscriptIconCache class >> fogBugzLogoutIconContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9i
 ZSBJbWFnZVJlYWR5ccllPAAAAhJJREFUeNqkUz1oFEEUnpndudm9y14CJxdDVsVC7SSVnVwZ
@@ -87,14 +87,14 @@ iRH8kneXLtuVhissw6JMxZlOPaUGHye+DPUzOLNbbIxZGs3HsaffjT75+J+vAbChe4AP+aP6
 ]
 
 { #category : #icons }
-FGBIconCache class >> fogBugzSearchIcon [
+ManuscriptIconCache class >> fogBugzSearchIcon [
 	^ self icons
 			at: #'fogBugzSearchIcon'
 			ifAbsentPut: [ Form fromBinaryStream: self fogBugzSearchIconContents base64Decoded readStream ].
 ]
 
 { #category : #'private - icons' }
-FGBIconCache class >> fogBugzSearchIconContents [
+ManuscriptIconCache class >> fogBugzSearchIconContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9i
 ZSBJbWFnZVJlYWR5ccllPAAAAhtJREFUeNqMks9rE0EUx2d/p8Fums1KcWkgNlDaSFIP/gk5
@@ -112,18 +112,18 @@ CQggDQdhn/NkT20S5FDjfwQYAChaRsx7+Z3rAAAAAElFTkSuQmCC'
 ]
 
 { #category : #accessing }
-FGBIconCache class >> iconNamed: aSymbol [
+ManuscriptIconCache class >> iconNamed: aSymbol [
 	(self class canUnderstand: aSymbol) ifFalse: [ ^super iconNamed: aSymbol ].
 	^self icons at: aSymbol ifAbsentPut: [self perform: aSymbol]
 ]
 
 { #category : #accessing }
-FGBIconCache class >> icons [
+ManuscriptIconCache class >> icons [
 	^ Icons ifNil: [Icons := Dictionary new]
 ]
 
 { #category : #initialization }
-FGBIconCache class >> reset [
+ManuscriptIconCache class >> reset [
 	<script>
 	
 	Icons := nil

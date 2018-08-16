@@ -2,7 +2,7 @@
 A case in FogBugz
 "
 Class {
-	#name : #FogBugzCase,
+	#name : #ManuscriptCase,
 	#superclass : #Object,
 	#instVars : [
 		'id',
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-FogBugzCase class >> fromDictionary: aCollection [ 
+ManuscriptCase class >> fromDictionary: aCollection [ 
 	|case|
 	case := self new.
 	case 
@@ -24,35 +24,35 @@ FogBugzCase class >> fromDictionary: aCollection [
 ]
 
 { #category : #comparision }
-FogBugzCase >> <= anotherCase [
+ManuscriptCase >> <= anotherCase [
 
 	^self id <= anotherCase id
 ]
 
 { #category : #conversion }
-FogBugzCase >> asURL [
+ManuscriptCase >> asURL [
 	^'https://pharo.fogbugz.com/f/cases/', self id asString
 ]
 
 { #category : #comparision }
-FogBugzCase >> hash [
+ManuscriptCase >> hash [
 	self id ifNil: [ ^super hash ].
 	^self id hash
 ]
 
 { #category : #accessing }
-FogBugzCase >> id [
+ManuscriptCase >> id [
 
 	^id
 ]
 
 { #category : #accessing }
-FogBugzCase >> id: aNumber [
+ManuscriptCase >> id: aNumber [
 	id := aNumber
 ]
 
 { #category : #printing }
-FogBugzCase >> printOn: aStream [
+ManuscriptCase >> printOn: aStream [
 
 	aStream 
 		nextPutAll: self id asString;
@@ -61,24 +61,24 @@ FogBugzCase >> printOn: aStream [
 ]
 
 { #category : #accessing }
-FogBugzCase >> status [
+ManuscriptCase >> status [
 
 	^status
 ]
 
 { #category : #accessing }
-FogBugzCase >> status: aSymbol [
+ManuscriptCase >> status: aSymbol [
 	status := aSymbol
 ]
 
 { #category : #accessing }
-FogBugzCase >> title [
+ManuscriptCase >> title [
 
 	^title
 ]
 
 { #category : #accessing }
-FogBugzCase >> title: aString [ 
+ManuscriptCase >> title: aString [ 
 
 	title := aString
 ]

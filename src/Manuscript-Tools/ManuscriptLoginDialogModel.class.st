@@ -2,7 +2,7 @@
 Login dialog
 "
 Class {
-	#name : #FGBLoginDialogModel,
+	#name : #ManuscriptLoginDialogModel,
 	#superclass : #ComposableModel,
 	#instVars : [
 		'usernameLabel',
@@ -14,7 +14,7 @@ Class {
 }
 
 { #category : #specs }
-FGBLoginDialogModel class >> defaultSpec [
+ManuscriptLoginDialogModel class >> defaultSpec [
   <spec: #default>
 
   ^ SpecLayout composed
@@ -34,7 +34,7 @@ FGBLoginDialogModel class >> defaultSpec [
 ]
 
 { #category : #'instance creation' }
-FGBLoginDialogModel class >> getCredentials [
+ManuscriptLoginDialogModel class >> getCredentials [
 	"self getCredentials"
 	<script>
 	
@@ -47,18 +47,18 @@ FGBLoginDialogModel class >> getCredentials [
 ]
 
 { #category : #defaults }
-FGBLoginDialogModel >> credentials [
+ManuscriptLoginDialogModel >> credentials [
   ^ usernameField text -> passwordField text
 
 ]
 
 { #category : #defaults }
-FGBLoginDialogModel >> initialExtent [
+ManuscriptLoginDialogModel >> initialExtent [
   ^ 350 @ 150
 ]
 
 { #category : #'initialization widgets' }
-FGBLoginDialogModel >> initializeWidgets [
+ManuscriptLoginDialogModel >> initializeWidgets [
   usernameLabel := self newLabel.
   usernameLabel label: 'Username'.
   usernameField := self newTextInput.
@@ -71,46 +71,46 @@ FGBLoginDialogModel >> initializeWidgets [
 ]
 
 { #category : #accessing }
-FGBLoginDialogModel >> passwordField [
+ManuscriptLoginDialogModel >> passwordField [
 	^ passwordField
 ]
 
 { #category : #accessing }
-FGBLoginDialogModel >> passwordField: anObject [
+ManuscriptLoginDialogModel >> passwordField: anObject [
 	passwordField := anObject
 ]
 
 { #category : #accessing }
-FGBLoginDialogModel >> passwordLabel [
+ManuscriptLoginDialogModel >> passwordLabel [
 	^ passwordLabel
 ]
 
 { #category : #accessing }
-FGBLoginDialogModel >> passwordLabel: anObject [
+ManuscriptLoginDialogModel >> passwordLabel: anObject [
 	passwordLabel := anObject
 ]
 
 { #category : #defaults }
-FGBLoginDialogModel >> title [
+ManuscriptLoginDialogModel >> title [
   ^ 'Login'
 ]
 
 { #category : #accessing }
-FGBLoginDialogModel >> usernameField [
+ManuscriptLoginDialogModel >> usernameField [
 	^ usernameField
 ]
 
 { #category : #accessing }
-FGBLoginDialogModel >> usernameField: anObject [
+ManuscriptLoginDialogModel >> usernameField: anObject [
 	usernameField := anObject
 ]
 
 { #category : #accessing }
-FGBLoginDialogModel >> usernameLabel [
+ManuscriptLoginDialogModel >> usernameLabel [
 	^ usernameLabel
 ]
 
 { #category : #accessing }
-FGBLoginDialogModel >> usernameLabel: anObject [
+ManuscriptLoginDialogModel >> usernameLabel: anObject [
 	usernameLabel := anObject
 ]

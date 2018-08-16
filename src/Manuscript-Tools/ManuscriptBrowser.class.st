@@ -2,7 +2,7 @@
 A browser for Fogbugz cases
 "
 Class {
-	#name : #FogBugzBrowser,
+	#name : #ManuscriptBrowser,
 	#superclass : #ComposableModel,
 	#instVars : [
 		'client',
@@ -16,7 +16,7 @@ Class {
 }
 
 { #category : #spec }
-FogBugzBrowser class >> contentSpec [
+ManuscriptBrowser class >> contentSpec [
 	<spec>
 	| searchBarOffset delta |
 	searchBarOffset := 5 + StandardFonts defaultFont height + 10.
@@ -27,7 +27,7 @@ FogBugzBrowser class >> contentSpec [
 ]
 
 { #category : #spec }
-FogBugzBrowser class >> defaultSpec [
+ManuscriptBrowser class >> defaultSpec [
 	<spec>
 	^ SpecLayout composed
 		add: #mainMenu
@@ -54,13 +54,13 @@ FogBugzBrowser class >> defaultSpec [
 ]
 
 { #category : #accessing }
-FogBugzBrowser class >> icon [
+ManuscriptBrowser class >> icon [
 
-	^FGBIconCache fogBugzIcon
+	^ManuscriptIconCache fogBugzIcon
 ]
 
 { #category : #menu }
-FogBugzBrowser class >> menuCommandOn: aBuilder [
+ManuscriptBrowser class >> menuCommandOn: aBuilder [
 	<worldMenu> 		 
 		
 	(aBuilder item: #'FogBugz Browser')	 	 
@@ -71,7 +71,7 @@ FogBugzBrowser class >> menuCommandOn: aBuilder [
 ]
 
 { #category : #'instance creation' }
-FogBugzBrowser class >> open [
+ManuscriptBrowser class >> open [
 	<script>
 	
 	(self basicNew)	 
@@ -80,18 +80,18 @@ FogBugzBrowser class >> open [
 ]
 
 { #category : #defaults }
-FogBugzBrowser class >> statusBarHeight [
+ManuscriptBrowser class >> statusBarHeight [
 
 	^ StandardFonts defaultFont height + 2
 ]
 
 { #category : #'private - actions' }
-FogBugzBrowser >> browseCase [
+ManuscriptBrowser >> browseCase [
 	casesModel selectedItem ifNotNil: [ :case | WebBrowser openOn: case asURL ]
 ]
 
 { #category : #'private - events' }
-FogBugzBrowser >> caseSearchAccept: aString [ 
+ManuscriptBrowser >> caseSearchAccept: aString [ 
 	| cases |
 	client ifNil: [ ^self ].
 	self casesModel items: OrderedCollection new.
@@ -103,13 +103,13 @@ FogBugzBrowser >> caseSearchAccept: aString [
 ]
 
 { #category : #'private - accessing' }
-FogBugzBrowser >> caseSearchField [
+ManuscriptBrowser >> caseSearchField [
 	
 	^casesSearchField
 ]
 
 { #category : #'private - initialization' }
-FogBugzBrowser >> casesListMenu: aMenu [ 
+ManuscriptBrowser >> casesListMenu: aMenu [ 
 
 	casesModel selectedItem ifNil: [ ^nil ].
 	aMenu target: self.
@@ -119,26 +119,26 @@ FogBugzBrowser >> casesListMenu: aMenu [
 ]
 
 { #category : #'private - accessing' }
-FogBugzBrowser >> casesModel [
+ManuscriptBrowser >> casesModel [
 
 	^casesModel
 ]
 
 { #category : #'private - accessing' }
-FogBugzBrowser >> casesModel: anObject [
+ManuscriptBrowser >> casesModel: anObject [
 	casesModel := anObject
 ]
 
 { #category : #'private - accessing' }
-FogBugzBrowser >> iconProvider [
+ManuscriptBrowser >> iconProvider [
 
-	^FGBIconCache 
+	^ManuscriptIconCache 
 ]
 
 { #category : #'private - initialization menues' }
-FogBugzBrowser >> initalFogBugzMenu [
+ManuscriptBrowser >> initalFogBugzMenu [
 	|builder|
-	builder := FGBMenuBuilder new.
+	builder := ManuscriptMenuBuilder new.
 	builder
 		addItem: 'Login'
 		icon: self iconProvider fogBugzLoginIcon 
@@ -151,9 +151,9 @@ FogBugzBrowser >> initalFogBugzMenu [
 ]
 
 { #category : #'private - initialization menues' }
-FogBugzBrowser >> initalQueryMenu [
+ManuscriptBrowser >> initalQueryMenu [
 	|builder|
-	builder := FGBMenuBuilder new.
+	builder := ManuscriptMenuBuilder new.
 	builder
 		addItem: 'Search'
 		icon: self iconProvider fogBugzSearchIcon 
@@ -162,13 +162,13 @@ FogBugzBrowser >> initalQueryMenu [
 ]
 
 { #category : #initialization }
-FogBugzBrowser >> initialExtent [
+ManuscriptBrowser >> initialExtent [
 
 	^530@360
 ]
 
 { #category : #'private - initialization' }
-FogBugzBrowser >> initializeCasesModel [
+ManuscriptBrowser >> initializeCasesModel [
 		
 	casesModel := self instantiate: IconListModel.
 	casesModel 
@@ -179,18 +179,18 @@ FogBugzBrowser >> initializeCasesModel [
 ]
 
 { #category : #'private - initialization' }
-FogBugzBrowser >> initializeMainMenu [
+ManuscriptBrowser >> initializeMainMenu [
 
 	| builder |
 	mainMenu := MenuModel new.
-	builder := FGBMenuBuilder forMenu: mainMenu.
+	builder := ManuscriptMenuBuilder forMenu: mainMenu.
 	builder addItem: 'FogBugz' icon: nil subMenu: self initalFogBugzMenu.
 	builder addItem: 'Query' icon: nil subMenu: self initalQueryMenu.						
 	"builder addItem: 'Help' icon: nil subMenu: self initalHelpMenu.	"	
 ]
 
 { #category : #'private - initialization' }
-FogBugzBrowser >> initializeSearchField [
+ManuscriptBrowser >> initializeSearchField [
 
 	casesSearchField := SearchMorph new
 								model: self;
@@ -200,7 +200,7 @@ FogBugzBrowser >> initializeSearchField [
 ]
 
 { #category : #'private - initialization' }
-FogBugzBrowser >> initializeStatusBar [
+ManuscriptBrowser >> initializeStatusBar [
 	statusBar := LabelModel new.
 	self statusBar 
 		color: Color gray;
@@ -208,7 +208,7 @@ FogBugzBrowser >> initializeStatusBar [
 ]
 
 { #category : #'private - initialization' }
-FogBugzBrowser >> initializeToolBar [
+ManuscriptBrowser >> initializeToolBar [
 
 	toolBar := MenuModel new
 		addGroup: [ :group |			 
@@ -239,7 +239,7 @@ FogBugzBrowser >> initializeToolBar [
 ]
 
 { #category : #'private - initialization' }
-FogBugzBrowser >> initializeWidgets [
+ManuscriptBrowser >> initializeWidgets [
 	self 
 		initializeMainMenu; 		
 		initializeToolBar;
@@ -250,12 +250,12 @@ FogBugzBrowser >> initializeWidgets [
 ]
 
 { #category : #'private - actions' }
-FogBugzBrowser >> login [
+ManuscriptBrowser >> login [
 
 	|cr fog|
-	cr :=	FGBLoginDialogModel getCredentials.
+	cr :=	ManuscriptLoginDialogModel getCredentials.
 	cr ifNil: [ ^self ].
-	fog := FogBugzClient loginUser: cr key password: cr value.
+	fog := ManuscriptClient loginUser: cr key password: cr value.
 	fog isLoggedIn 
 		ifTrue: [ client := fog.
 			self statusBar label: 'Connected' ]
@@ -263,7 +263,7 @@ FogBugzBrowser >> login [
 ]
 
 { #category : #'private - actions' }
-FogBugzBrowser >> logout [
+ManuscriptBrowser >> logout [
 	client ifNotNil: [ 
 		client logout.
 		self casesModel items: OrderedCollection new.
@@ -272,49 +272,49 @@ FogBugzBrowser >> logout [
 ]
 
 { #category : #accessing }
-FogBugzBrowser >> mainMenu [
+ManuscriptBrowser >> mainMenu [
 	^ mainMenu
 ]
 
 { #category : #accessing }
-FogBugzBrowser >> mainMenu: anObject [
+ManuscriptBrowser >> mainMenu: anObject [
 	mainMenu := anObject
 ]
 
 { #category : #'private - actions' }
-FogBugzBrowser >> search [
+ManuscriptBrowser >> search [
 
 	self caseSearchAccept: self caseSearchField widget searchString
 ]
 
 { #category : #accessing }
-FogBugzBrowser >> statusBar [
+ManuscriptBrowser >> statusBar [
 	^ statusBar
 ]
 
 { #category : #accessing }
-FogBugzBrowser >> statusBar: anObject [
+ManuscriptBrowser >> statusBar: anObject [
 	statusBar := anObject
 ]
 
 { #category : #accessing }
-FogBugzBrowser >> taskbarIcon [
+ManuscriptBrowser >> taskbarIcon [
 
 	^self class icon
 ]
 
 { #category : #accessing }
-FogBugzBrowser >> title [
+ManuscriptBrowser >> title [
 
 	^'FogBugz Browser'
 ]
 
 { #category : #'private - accessing' }
-FogBugzBrowser >> toolBar [
+ManuscriptBrowser >> toolBar [
 	^ toolBar
 ]
 
 { #category : #'private - accessing' }
-FogBugzBrowser >> toolBar: anObject [
+ManuscriptBrowser >> toolBar: anObject [
 	toolBar := anObject
 ]

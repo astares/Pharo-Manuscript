@@ -2,8 +2,8 @@
 Login command
 "
 Class {
-	#name : #FGBLoginCommand,
-	#superclass : #FGBCommand,
+	#name : #ManuscriptLoginCommand,
+	#superclass : #ManuscriptCommand,
 	#instVars : [
 		'email',
 		'password'
@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-FGBLoginCommand class >> loginUser: email password: password [
+ManuscriptLoginCommand class >> loginUser: email password: password [
 
 	^(self new)
 		email: email;
@@ -22,27 +22,27 @@ FGBLoginCommand class >> loginUser: email password: password [
 ]
 
 { #category : #accessing }
-FGBLoginCommand >> email [
+ManuscriptLoginCommand >> email [
 	^ email
 ]
 
 { #category : #accessing }
-FGBLoginCommand >> email: anObject [
+ManuscriptLoginCommand >> email: anObject [
 	email := anObject
 ]
 
 { #category : #accessing }
-FGBLoginCommand >> password [
+ManuscriptLoginCommand >> password [
 	^ password
 ]
 
 { #category : #accessing }
-FGBLoginCommand >> password: anObject [
+ManuscriptLoginCommand >> password: anObject [
 	password := anObject
 ]
 
 { #category : #printing }
-FGBLoginCommand >> printOn: aStream [
+ManuscriptLoginCommand >> printOn: aStream [
 
 	aStream
 		nextPutAll:

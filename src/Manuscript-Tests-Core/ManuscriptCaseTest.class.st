@@ -1,14 +1,17 @@
+"
+Unit tests for ManuscriptCase
+"
 Class {
-	#name : #FogBugzCaseTest,
+	#name : #ManuscriptCaseTest,
 	#superclass : #TestCase,
 	#category : #'Manuscript-Tests-Core-Model'
 }
 
 { #category : #tests }
-FogBugzCaseTest >> testAsURL [
+ManuscriptCaseTest >> testAsURL [
 
 	|c|
-	c := FogBugzCase new.
+	c := ManuscriptCase new.
 	c id: 666.
 	self assert: c asURL equals: 'https://pharo.fogbugz.com/f/cases/666'
 ]
