@@ -16,6 +16,12 @@ ManuscriptTokenCommand class >> isAbstract [
 	^self name = #ManuscriptTokenCommand
 ]
 
+{ #category : #initialization }
+ManuscriptTokenCommand >> initialize [
+	super initialize.
+	self token: ''
+]
+
 { #category : #testing }
 ManuscriptTokenCommand >> requiresSession [
 

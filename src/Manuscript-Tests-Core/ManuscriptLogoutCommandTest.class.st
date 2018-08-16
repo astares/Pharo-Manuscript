@@ -26,6 +26,14 @@ ManuscriptLogoutCommandTest >> testInstanceCreation [
 ]
 
 { #category : #tests }
+ManuscriptLogoutCommandTest >> testInstanceCreationEmpty [
+
+	| cmd |
+	cmd := ManuscriptLogoutCommand new.
+	self assert: cmd printString equals: '{"cmd": "logoff","token": ""}'
+]
+
+{ #category : #tests }
 ManuscriptLogoutCommandTest >> testRequiresSession [
 
 	self assert: command requiresSession 
