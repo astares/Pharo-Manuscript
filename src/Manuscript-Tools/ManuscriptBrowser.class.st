@@ -184,7 +184,7 @@ ManuscriptBrowser >> initializeMainMenu [
 	| builder |
 	mainMenu := MenuModel new.
 	builder := ManuscriptMenuBuilder forMenu: mainMenu.
-	builder addItem: 'FogBugz' icon: nil subMenu: self initalSessionMenu.
+	builder addItem: 'Manuscript' icon: nil subMenu: self initalSessionMenu.
 	builder addItem: 'Query' icon: nil subMenu: self initalQueryMenu.						
 	"builder addItem: 'Help' icon: nil subMenu: self initalHelpMenu.	"	
 ]
