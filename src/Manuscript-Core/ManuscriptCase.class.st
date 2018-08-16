@@ -31,7 +31,7 @@ ManuscriptCase >> <= anotherCase [
 
 { #category : #conversion }
 ManuscriptCase >> asURL [
-	^'https://pharo.fogbugz.com/f/cases/', self id asString
+	^'https://pharo.manuscript.com/f/cases/', self id asString
 ]
 
 { #category : #comparision }
