@@ -305,7 +305,7 @@ ManuscriptBrowser >> taskbarIcon [
 { #category : #accessing }
 ManuscriptBrowser >> title [
 
-	^'FogBugz Browser'
+	^'Manuscript Browser'
 ]
 
 { #category : #'private - accessing' }
