@@ -58,16 +58,28 @@ ManuscriptLoginDialogModel >> initialExtent [
 ]
 
 { #category : #'initialization widgets' }
+ManuscriptLoginDialogModel >> initializeFromSettings [
+
+	ManuscriptSettings useCredentials ifFalse: [ ^false ].
+	ManuscriptSettings credentials username
+		ifNotEmpty: [:x | usernameField text: x ].
+	ManuscriptSettings credentials password
+		ifNotEmpty: [:x | passwordField text: x ]	
+	
+]
+
+{ #category : #'initialization widgets' }
 ManuscriptLoginDialogModel >> initializeWidgets [
   usernameLabel := self newLabel.
   usernameLabel label: 'Username'.
   usernameField := self newTextInput.
-  usernameField autoAccept: true; ghostText: 'pharo@fogbugz.com'.
+  usernameField autoAccept: true; ghostText: 'pharo@manuscript.com'.
   passwordLabel := self newLabel.
-  passwordLabel label: 'Password'; yourself.
+  passwordLabel label: 'Password'.
   passwordField := self newTextInput.
   passwordField beEncrypted; autoAccept: true; ghostText: '******'.
-  self focusOrder add: usernameField; add: passwordField
+  self focusOrder add: usernameField; add: passwordField.
+  self initializeFromSettings
 ]
 
 { #category : #accessing }
