@@ -85,6 +85,12 @@ ManuscriptClient >> listProjects [
 	^self queryListUsing: ManuscriptListProjectsCommand new
 ]
 
+{ #category : #listing }
+ManuscriptClient >> listUsers [
+
+	^self queryListUsing: ManuscriptListUsersCommand new
+]
+
 { #category : #private }
 ManuscriptClient >> login: email password: password [
 	| ston |

@@ -14,7 +14,7 @@ Class {
 ManuscriptNamedObject class >> fromDictionary: aDictionary [ 
 	
 	|nameKey|
-	nameKey := (#s, self manuscriptIdentifier) asSymbol.
+	nameKey := (#s, self manuscriptNameIdentifier) asSymbol.
 	^(super fromDictionary: aDictionary)
 		name: (aDictionary at: nameKey);
 		yourself
@@ -24,6 +24,13 @@ ManuscriptNamedObject class >> fromDictionary: aDictionary [
 ManuscriptNamedObject class >> isAbstract [
 
 	^self name = #ManuscriptNamedObject
+]
+
+{ #category : #defaults }
+ManuscriptNamedObject class >> manuscriptNameIdentifier [
+	"By default the name identifier conforms to the id identifier"
+
+	^self manuscriptIdentifier 
 ]
 
 { #category : #initialization }
