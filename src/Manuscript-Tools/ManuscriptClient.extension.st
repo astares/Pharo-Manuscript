@@ -6,7 +6,7 @@ ManuscriptClient class >> getWorkingClientByAskingUser [
 	client := nil.
 	potentialCredentials := ManuscriptSettings credentials.
 	[ client isNil ] whileTrue: [
-		potentialCredentials ifNil: [ potentialCredentials := ManuscriptLoginDialogModel getCredentials ].
+		potentialCredentials ifNil: [ potentialCredentials := ManuscriptLoginPresenter getCredentials ].
 		potentialCredentials ifNil: [ ManuscriptUserCancelledLogin signal ].
 		[ client := self loginUser: potentialCredentials key password: potentialCredentials value.		
 		  ManuscriptSettings 

@@ -2,7 +2,7 @@
 Login dialog
 "
 Class {
-	#name : #ManuscriptLoginDialogModel,
+	#name : #ManuscriptLoginPresenter,
 	#superclass : #ComposablePresenter,
 	#instVars : [
 		'usernameLabel',
@@ -14,7 +14,7 @@ Class {
 }
 
 { #category : #specs }
-ManuscriptLoginDialogModel class >> defaultSpec [
+ManuscriptLoginPresenter class >> defaultSpec [
   <spec: #default>
 
   ^ SpecLayout composed
@@ -34,7 +34,7 @@ ManuscriptLoginDialogModel class >> defaultSpec [
 ]
 
 { #category : #'instance creation' }
-ManuscriptLoginDialogModel class >> getCredentials [
+ManuscriptLoginPresenter class >> getCredentials [
 	"self getCredentials"
 	<script>
 	
@@ -47,17 +47,17 @@ ManuscriptLoginDialogModel class >> getCredentials [
 ]
 
 { #category : #defaults }
-ManuscriptLoginDialogModel >> credentials [
+ManuscriptLoginPresenter >> credentials [
 	^ ManuscriptCredentials username: usernameField text password: passwordField text
 ]
 
 { #category : #defaults }
-ManuscriptLoginDialogModel >> initialExtent [
+ManuscriptLoginPresenter >> initialExtent [
   ^ 350 @ 150
 ]
 
 { #category : #'initialization widgets' }
-ManuscriptLoginDialogModel >> initializeFromSettings [
+ManuscriptLoginPresenter >> initializeFromSettings [
 
 	ManuscriptSettings useCredentials ifFalse: [ ^false ].
 	ManuscriptSettings credentials username
@@ -68,7 +68,7 @@ ManuscriptLoginDialogModel >> initializeFromSettings [
 ]
 
 { #category : #'initialization widgets' }
-ManuscriptLoginDialogModel >> initializeWidgets [
+ManuscriptLoginPresenter >> initializeWidgets [
   usernameLabel := self newLabel.
   usernameLabel label: 'Username'.
   usernameField := self newTextInput.
@@ -82,46 +82,46 @@ ManuscriptLoginDialogModel >> initializeWidgets [
 ]
 
 { #category : #accessing }
-ManuscriptLoginDialogModel >> passwordField [
+ManuscriptLoginPresenter >> passwordField [
 	^ passwordField
 ]
 
 { #category : #accessing }
-ManuscriptLoginDialogModel >> passwordField: anObject [
+ManuscriptLoginPresenter >> passwordField: anObject [
 	passwordField := anObject
 ]
 
 { #category : #accessing }
-ManuscriptLoginDialogModel >> passwordLabel [
+ManuscriptLoginPresenter >> passwordLabel [
 	^ passwordLabel
 ]
 
 { #category : #accessing }
-ManuscriptLoginDialogModel >> passwordLabel: anObject [
+ManuscriptLoginPresenter >> passwordLabel: anObject [
 	passwordLabel := anObject
 ]
 
 { #category : #defaults }
-ManuscriptLoginDialogModel >> title [
+ManuscriptLoginPresenter >> title [
   ^ 'Manuscript Login'
 ]
 
 { #category : #accessing }
-ManuscriptLoginDialogModel >> usernameField [
+ManuscriptLoginPresenter >> usernameField [
 	^ usernameField
 ]
 
 { #category : #accessing }
-ManuscriptLoginDialogModel >> usernameField: anObject [
+ManuscriptLoginPresenter >> usernameField: anObject [
 	usernameField := anObject
 ]
 
 { #category : #accessing }
-ManuscriptLoginDialogModel >> usernameLabel [
+ManuscriptLoginPresenter >> usernameLabel [
 	^ usernameLabel
 ]
 
 { #category : #accessing }
-ManuscriptLoginDialogModel >> usernameLabel: anObject [
+ManuscriptLoginPresenter >> usernameLabel: anObject [
 	usernameLabel := anObject
 ]

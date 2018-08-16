@@ -246,7 +246,7 @@ ManuscriptBrowser >> initializeWidgets [
 ManuscriptBrowser >> login [
 
 	|cr fog|
-	cr :=	ManuscriptLoginDialogModel getCredentials.
+	cr :=	ManuscriptLoginPresenter getCredentials.
 	cr ifNil: [ ^self ].
 	fog := ManuscriptClient loginUser: cr username password: cr password.
 	fog isLoggedIn 
