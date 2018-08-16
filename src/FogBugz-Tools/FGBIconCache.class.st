@@ -14,7 +14,7 @@ Class {
 FGBIconCache class >> fogBugzIcon [
 	^ self icons
 			at: #'fogBugzIcon'
-			ifAbsentPut: [ Form fromBinaryStream: (Base64MimeConverter mimeDecodeToBytes: self fogBugzIconContents readStream) ].
+			ifAbsentPut: [ Form fromBinaryStream: self fogBugzIconContents base64Decoded readStream ].
 ]
 
 { #category : #'private - icons' }
