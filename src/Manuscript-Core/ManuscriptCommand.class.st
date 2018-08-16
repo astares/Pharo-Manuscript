@@ -8,6 +8,12 @@ Class {
 }
 
 { #category : #testing }
+ManuscriptCommand class >> isAbstract [
+
+	^self name = #ManuscriptCommand
+]
+
+{ #category : #testing }
 ManuscriptCommand >> requiresSession [
 
 	^false

@@ -11,6 +11,12 @@ Class {
 }
 
 { #category : #testing }
+ManuscriptTokenCommand class >> isAbstract [
+
+	^self name = #ManuscriptTokenCommand
+]
+
+{ #category : #testing }
 ManuscriptTokenCommand >> requiresSession [
 
 	^true
