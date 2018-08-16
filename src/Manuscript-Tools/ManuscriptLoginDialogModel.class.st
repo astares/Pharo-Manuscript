@@ -3,7 +3,7 @@ Login dialog
 "
 Class {
 	#name : #ManuscriptLoginDialogModel,
-	#superclass : #ComposableModel,
+	#superclass : #ComposablePresenter,
 	#instVars : [
 		'usernameLabel',
 		'usernameField',
