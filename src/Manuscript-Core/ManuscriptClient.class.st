@@ -61,7 +61,13 @@ ManuscriptClient >> jsonAPILocation [
 	^'https://pharo.manuscript.com/f/api/0/jsonapi'
 ]
 
-{ #category : #interacting }
+{ #category : #listing }
+ManuscriptClient >> listCategories [
+	
+	^self queryResultOf: ManuscriptListCategoriesCommand new retrieving: #categories fromType: ManuscriptCategory
+]
+
+{ #category : #listing }
 ManuscriptClient >> listProjects [
 	
 	^self queryResultOf: ManuscriptListProjectsCommand new retrieving: #projects fromType: ManuscriptProject

@@ -21,10 +21,16 @@ ManuscriptSearchCommand class >> query: query [
 { #category : #conversion }
 ManuscriptSearchCommand >> asJSONString [
 
-	^'{"cmd": "search",
-	 	"token": "<1s>",
-		"q": "<2s>",
-  		"cols": ["sTitle", "sStatus"]}' expandMacrosWith: token asString with: query asString
+	^'{"cmd": "<1s>",
+	 	"token": "<2s>",
+		"q": "<3s>",
+  		"cols": ["sTitle", "sStatus"]}' expandMacrosWith: self commandID with: token asString with: query asString
+]
+
+{ #category : #defaults }
+ManuscriptSearchCommand >> commandID [
+
+	^'search'
 ]
 
 { #category : #accessing }
