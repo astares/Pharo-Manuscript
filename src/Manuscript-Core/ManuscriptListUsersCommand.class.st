@@ -7,6 +7,12 @@ Class {
 	#category : #'Manuscript-Core-Commands'
 }
 
+{ #category : #conversion }
+ManuscriptListUsersCommand >> asJSONString [
+
+	^'{"cmd": "<1s>","token": "<2s>", "fIncludeVirtual": 1, "fIncludeNormal": 1}' expandMacrosWith: self commandID with: token asString
+]
+
 { #category : #defaults }
 ManuscriptListUsersCommand >> collectionID [
 
