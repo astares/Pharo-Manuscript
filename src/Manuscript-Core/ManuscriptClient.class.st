@@ -36,10 +36,7 @@ ManuscriptClient class >> loginUser: email password: password [
 ManuscriptClient >> createNewCase: aManuscriptCase [
 
 	| rawResult |
-	rawResult := self executeCommand: (
-							FGBNewCaseCommand new
-									case: aManuscriptCase;
-									yourself).
+	rawResult := self executeCommand: (ManuscriptCreateNewCaseCommand token: token on: aManuscriptCase).
 	(rawResult at: #errorCode)
 		ifNil: [ ^ self ].
 	

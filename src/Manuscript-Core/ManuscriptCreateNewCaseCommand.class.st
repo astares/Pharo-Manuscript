@@ -7,6 +7,14 @@ Class {
 	#category : #'Manuscript-Core-Commands'
 }
 
+{ #category : #'instance creation' }
+ManuscriptCreateNewCaseCommand class >> token: aToken on: caseToCreate [
+
+	^(self token: aToken)
+		caseToCreate: caseToCreate;
+		yourself
+]
+
 { #category : #conversion }
 ManuscriptCreateNewCaseCommand >> asJSONString [
 	| params |
@@ -17,7 +25,7 @@ ManuscriptCreateNewCaseCommand >> asJSONString [
 		add: caseToCreate title;
 		add: caseToCreate content;
 		add: caseToCreate category name;
-		add: caseToCreate project title;
+		add: caseToCreate project name;
 		add: caseToCreate area name;
 		add: caseToCreate milestone name;
 		add: caseToCreate status name;		
@@ -33,8 +41,8 @@ ManuscriptCreateNewCaseCommand >> asJSONString [
 		"sArea": "<7s>",	
 		"sMilestone": "<8s>",		
 		"sStatus": "<9s>",	
-		"sPersonAssignedTo": "<9s>",			
-		"sPriority": "<10s>"' expandMacrosWithArguments: params asArray
+		"sPersonAssignedTo": "<10s>",			
+		"sPriority": "<11s>"}' expandMacrosWithArguments: params asArray
 ]
 
 { #category : #accessing }
