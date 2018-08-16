@@ -8,7 +8,19 @@ Class {
 }
 
 { #category : #defaults }
+ManuscriptListProjectsCommand >> collectionID [
+
+	^#projects
+]
+
+{ #category : #defaults }
 ManuscriptListProjectsCommand >> commandID [
 
 	^'listProjects'
+]
+
+{ #category : #defaults }
+ManuscriptListProjectsCommand >> modelClass [
+
+	^ManuscriptProject
 ]

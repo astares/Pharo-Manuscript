@@ -62,21 +62,27 @@ ManuscriptClient >> jsonAPILocation [
 ]
 
 { #category : #listing }
+ManuscriptClient >> listAreas [
+	
+	^self queryListUsing: ManuscriptListAreasCommand new
+]
+
+{ #category : #listing }
 ManuscriptClient >> listCategories [
 	
-	^self queryResultOf: ManuscriptListCategoriesCommand new retrieving: #categories fromType: ManuscriptCategory
+	^self queryListUsing: ManuscriptListCategoriesCommand new
 ]
 
 { #category : #listing }
 ManuscriptClient >> listMilestones [
 	
-	^self queryResultOf: ManuscriptListMilestonesCommand new retrieving: #fixfors fromType: ManuscriptMilestone
+	^self queryListUsing: ManuscriptListMilestonesCommand new
 ]
 
 { #category : #listing }
 ManuscriptClient >> listProjects [
 	
-	^self queryResultOf: ManuscriptListProjectsCommand new retrieving: #projects fromType: ManuscriptProject
+	^self queryListUsing: ManuscriptListProjectsCommand new
 ]
 
 { #category : #private }
@@ -102,6 +108,12 @@ ManuscriptClient >> logout [
 ManuscriptClient >> query: aString [
 	
 	^self queryResultOf: (ManuscriptSearchCommand query: aString) retrieving: #cases fromType: ManuscriptCase
+]
+
+{ #category : #'private - utilities' }
+ManuscriptClient >> queryListUsing: aManuscriptListCommand [
+	
+	^self queryResultOf: aManuscriptListCommand retrieving: aManuscriptListCommand collectionID  fromType: aManuscriptListCommand modelClass 
 ]
 
 { #category : #interacting }

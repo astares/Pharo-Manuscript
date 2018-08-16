@@ -12,3 +12,15 @@ ManuscriptListCommand class >> isAbstract [
 
 	^self name = #ManuscriptListCommand
 ]
+
+{ #category : #defaults }
+ManuscriptListCommand >> collectionID [
+
+	^self subclassResponsibility 
+]
+
+{ #category : #defaults }
+ManuscriptListCommand >> modelClass [
+
+	^self subclassResponsibility 
+]

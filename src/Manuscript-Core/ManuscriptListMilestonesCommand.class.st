@@ -8,7 +8,19 @@ Class {
 }
 
 { #category : #defaults }
+ManuscriptListMilestonesCommand >> collectionID [
+
+	^#fixfors
+]
+
+{ #category : #defaults }
 ManuscriptListMilestonesCommand >> commandID [
 
 	^'listFixFors'
+]
+
+{ #category : #defaults }
+ManuscriptListMilestonesCommand >> modelClass [
+
+	^ManuscriptMilestone
 ]
