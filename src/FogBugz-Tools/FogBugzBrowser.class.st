@@ -65,6 +65,7 @@ FogBugzBrowser class >> menuCommandOn: aBuilder [
 		
 	(aBuilder item: #'FogBugz Browser')	 	 
 		action: [ self open ]; 
+		parent: #Tools;
 		icon: self icon.
 	aBuilder withSeparatorAfter.		
 ]
