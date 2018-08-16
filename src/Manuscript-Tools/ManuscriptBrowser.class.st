@@ -248,7 +248,7 @@ ManuscriptBrowser >> login [
 	|cr fog|
 	cr :=	ManuscriptLoginDialogModel getCredentials.
 	cr ifNil: [ ^self ].
-	fog := ManuscriptClient loginUser: cr key password: cr value.
+	fog := ManuscriptClient loginUser: cr username password: cr password.
 	fog isLoggedIn 
 		ifTrue: [ client := fog.
 			self statusBar label: 'Connected' ]

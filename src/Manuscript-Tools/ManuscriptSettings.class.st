@@ -39,6 +39,11 @@ ManuscriptSettings class >> credentials [
 	^Credentials ifNil: [ Credentials := ManuscriptCredentials new ]
 ]
 
+{ #category : #'private - accessing' }
+ManuscriptSettings class >> credentials: credentials [
+	Credentials := credentials 
+]
+
 { #category : #'class initialization' }
 ManuscriptSettings class >> initialize [
 	self reset

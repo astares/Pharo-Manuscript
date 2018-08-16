@@ -11,6 +11,16 @@ Class {
 	#category : #'Manuscript-Tools-Security'
 }
 
+{ #category : #'instance creation' }
+ManuscriptCredentials class >> username: username password: password [
+	"Return a new instance of the receiver filled with the given username and password"
+	
+	^(self new)
+		username: username;
+		password: password;
+		yourself
+]
+
 { #category : #initialization }
 ManuscriptCredentials >> initialize [
 	super initialize.

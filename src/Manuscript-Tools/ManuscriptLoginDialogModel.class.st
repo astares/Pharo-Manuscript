@@ -48,8 +48,7 @@ ManuscriptLoginDialogModel class >> getCredentials [
 
 { #category : #defaults }
 ManuscriptLoginDialogModel >> credentials [
-  ^ usernameField text -> passwordField text
-
+	^ ManuscriptCredentials username: usernameField text password: passwordField text
 ]
 
 { #category : #defaults }
