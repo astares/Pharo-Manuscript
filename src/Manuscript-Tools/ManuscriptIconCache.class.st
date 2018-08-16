@@ -10,15 +10,26 @@ Class {
 	#category : #'Manuscript-Tools-Utilities'
 }
 
+{ #category : #accessing }
+ManuscriptIconCache class >> iconNamed: aSymbol [
+	(self class canUnderstand: aSymbol) ifFalse: [ ^super iconNamed: aSymbol ].
+	^self icons at: aSymbol ifAbsentPut: [self perform: aSymbol]
+]
+
+{ #category : #accessing }
+ManuscriptIconCache class >> icons [
+	^ Icons ifNil: [Icons := Dictionary new]
+]
+
 { #category : #icons }
-ManuscriptIconCache class >> fogBugzIcon [
+ManuscriptIconCache class >> manuscriptIcon [
 	^ self icons
-			at: #'fogBugzIcon'
-			ifAbsentPut: [ Form fromBinaryStream: self fogBugzIconContents base64Decoded readStream ].
+			at: #manuscriptIcon
+			ifAbsentPut: [ Form fromBinaryStream: self manuscriptIconContents base64Decoded readStream ].
 ]
 
 { #category : #'private - icons' }
-ManuscriptIconCache class >> fogBugzIconContents [
+ManuscriptIconCache class >> manuscriptIconContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACjUlEQVR42mNkIAKI8wqpA6kw
 IO55+fndd2Q5RkKaJXiFwlRkeOqlRDnUHj7/dunhi28NLz6/20yUAdICwknxXvJzdZT44GJr
@@ -38,14 +49,14 @@ SUVORK5CYII='
 ]
 
 { #category : #icons }
-ManuscriptIconCache class >> fogBugzLoginIcon [
+ManuscriptIconCache class >> manuscriptLoginIcon [
 	^ self icons
-			at: #'fogBugzLoginIcon'
-			ifAbsentPut: [ Form fromBinaryStream: self fogBugzLoginIconContents base64Decoded readStream ].
+			at: #manuscriptLoginIcon
+			ifAbsentPut: [ Form fromBinaryStream: self manuscriptLoginIconContents base64Decoded readStream ].
 ]
 
 { #category : #'private - icons' }
-ManuscriptIconCache class >> fogBugzLoginIconContents [
+ManuscriptIconCache class >> manuscriptLoginIconContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9i
 ZSBJbWFnZVJlYWR5ccllPAAAAfNJREFUeNpi/P//PwMlgJFiA0L3PkYXiwbiOCA2AOJ/QHwJ
@@ -62,14 +73,14 @@ lgXi+0D8nuEPk+COBIkicCDazXgGc06fmDZ3DhM7E/P7e99//v7yFxyNbDzMzIIqnOy/v/79
 ]
 
 { #category : #icons }
-ManuscriptIconCache class >> fogBugzLogoutIcon [
+ManuscriptIconCache class >> manuscriptLogoutIcon [
 	^ self icons
-			at: #'fogBugzLogoutIcon'
-			ifAbsentPut: [ Form fromBinaryStream: self fogBugzLogoutIconContents base64Decoded readStream ].
+			at: #manuscriptLogoutIcon
+			ifAbsentPut: [ Form fromBinaryStream: self manuscriptLogoutIconContents base64Decoded readStream ].
 ]
 
 { #category : #'private - icons' }
-ManuscriptIconCache class >> fogBugzLogoutIconContents [
+ManuscriptIconCache class >> manuscriptLogoutIconContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9i
 ZSBJbWFnZVJlYWR5ccllPAAAAhJJREFUeNqkUz1oFEEUnpndudm9y14CJxdDVsVC7SSVnVwZ
@@ -87,14 +98,14 @@ iRH8kneXLtuVhissw6JMxZlOPaUGHye+DPUzOLNbbIxZGs3HsaffjT75+J+vAbChe4AP+aP6
 ]
 
 { #category : #icons }
-ManuscriptIconCache class >> fogBugzSearchIcon [
+ManuscriptIconCache class >> manuscriptSearchIcon [
 	^ self icons
-			at: #'fogBugzSearchIcon'
-			ifAbsentPut: [ Form fromBinaryStream: self fogBugzSearchIconContents base64Decoded readStream ].
+			at: #manuscriptSearchIcon
+			ifAbsentPut: [ Form fromBinaryStream: self manuscriptSearchIconContents base64Decoded readStream ].
 ]
 
 { #category : #'private - icons' }
-ManuscriptIconCache class >> fogBugzSearchIconContents [
+ManuscriptIconCache class >> manuscriptSearchIconContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9i
 ZSBJbWFnZVJlYWR5ccllPAAAAhtJREFUeNqMks9rE0EUx2d/p8Fums1KcWkgNlDaSFIP/gk5
@@ -109,17 +120,6 @@ w5aFHaeqt+fr+1z6BMDVg8VF8dgmJsAfwBulxERODARfhaVe37DCU2/zVaOqmfPNEps+Aeim
 0Z47E+CKNJgUTHIBs6SV3zPQ+0ILjV0L+n0cl2LROcW06ZTRJojzoaeFQqvHYBy79guTcwNc
 CQggDQdhn/NkT20S5FDjfwQYAChaRsx7+Z3rAAAAAElFTkSuQmCC'
 
-]
-
-{ #category : #accessing }
-ManuscriptIconCache class >> iconNamed: aSymbol [
-	(self class canUnderstand: aSymbol) ifFalse: [ ^super iconNamed: aSymbol ].
-	^self icons at: aSymbol ifAbsentPut: [self perform: aSymbol]
-]
-
-{ #category : #accessing }
-ManuscriptIconCache class >> icons [
-	^ Icons ifNil: [Icons := Dictionary new]
 ]
 
 { #category : #initialization }

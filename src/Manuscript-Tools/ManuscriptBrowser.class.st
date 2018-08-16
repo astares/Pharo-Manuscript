@@ -56,7 +56,7 @@ ManuscriptBrowser class >> defaultSpec [
 { #category : #accessing }
 ManuscriptBrowser class >> icon [
 
-	^ManuscriptIconCache fogBugzIcon
+	^ManuscriptIconCache manuscriptIcon
 ]
 
 { #category : #menu }
@@ -141,11 +141,11 @@ ManuscriptBrowser >> initalFogBugzMenu [
 	builder := ManuscriptMenuBuilder new.
 	builder
 		addItem: 'Login'
-		icon: self iconProvider fogBugzLoginIcon 
+		icon: self iconProvider manuscriptLoginIcon 
 		action: [ self login ].
 	builder
 		addItem: 'Logout'
-		icon: self iconProvider fogBugzLogoutIcon 
+		icon: self iconProvider manuscriptLogoutIcon 
 		action: [ self logout ].	
 	^builder menu	
 ]
@@ -156,7 +156,7 @@ ManuscriptBrowser >> initalQueryMenu [
 	builder := ManuscriptMenuBuilder new.
 	builder
 		addItem: 'Search'
-		icon: self iconProvider fogBugzSearchIcon 
+		icon: self iconProvider manuscriptSearchIcon 
 		action: [ self search ].
 	^builder menu	
 ]
@@ -174,7 +174,7 @@ ManuscriptBrowser >> initializeCasesModel [
 	casesModel 
  		items: SortedCollection new;
 		displayBlock: [ :case | case printString ];
-		icons: [:user |  self iconProvider fogBugzIcon ];
+		icons: [:user |  self iconProvider manuscriptIcon ];
 		menu: [:menu | self casesListMenu: menu ]
 ]
 
@@ -216,19 +216,19 @@ ManuscriptBrowser >> initializeToolBar [
 				item
 					name: nil;
 					description: 'Login';
-					icon: (self iconProvider fogBugzLoginIcon);
+					icon: (self iconProvider manuscriptLoginIcon);
 					action: [ self login ] ].
 			group addItem: [ :item |
 				item
 					name: nil;
 					description: 'Logout';
-					icon: (self iconProvider fogBugzLogoutIcon);
+					icon: (self iconProvider manuscriptLogoutIcon);
 					action: [ self logout ] ].	
 			group addItem: [ :item |
 				item
 					name: nil;
 					description: 'Search';
-					icon: (self iconProvider fogBugzSearchIcon);
+					icon: (self iconProvider manuscriptSearchIcon);
 					action: [ self search ] ].	
 					
 			 
