@@ -41,7 +41,7 @@ SUVORK5CYII='
 FGBIconCache class >> fogBugzLoginIcon [
 	^ self icons
 			at: #'fogBugzLoginIcon'
-			ifAbsentPut: [ Form fromBinaryStream: (Base64MimeConverter mimeDecodeToBytes: self fogBugzLoginIconContents readStream) ].
+			ifAbsentPut: [ Form fromBinaryStream: self fogBugzLoginIconContents base64Decoded readStream ].
 ]
 
 { #category : #'private - icons' }
@@ -65,7 +65,7 @@ lgXi+0D8nuEPk+COBIkicCDazXgGc06fmDZ3DhM7E/P7e99//v7yFxyNbDzMzIIqnOy/v/79
 FGBIconCache class >> fogBugzLogoutIcon [
 	^ self icons
 			at: #'fogBugzLogoutIcon'
-			ifAbsentPut: [ Form fromBinaryStream: (Base64MimeConverter mimeDecodeToBytes: self fogBugzLogoutIconContents readStream) ].
+			ifAbsentPut: [ Form fromBinaryStream: self fogBugzLogoutIconContents base64Decoded readStream ].
 ]
 
 { #category : #'private - icons' }
@@ -90,7 +90,7 @@ iRH8kneXLtuVhissw6JMxZlOPaUGHye+DPUzOLNbbIxZGs3HsaffjT75+J+vAbChe4AP+aP6
 FGBIconCache class >> fogBugzSearchIcon [
 	^ self icons
 			at: #'fogBugzSearchIcon'
-			ifAbsentPut: [ Form fromBinaryStream: (Base64MimeConverter mimeDecodeToBytes: self fogBugzSearchIconContents readStream) ].
+			ifAbsentPut: [ Form fromBinaryStream: self fogBugzSearchIconContents base64Decoded readStream ].
 ]
 
 { #category : #'private - icons' }
