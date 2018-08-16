@@ -14,7 +14,7 @@ Class {
 { #category : #'instance creation' }
 ManuscriptCase class >> fromDictionary: aDictionary [ 
 	|case|
-	case := self fromDictionary: aDictionary identifier: #ixBug.
+	case := super fromDictionary: aDictionary.
 	case 
 		title: (aDictionary at: #sTitle);
 		status: (aDictionary at: #sStatus) asSymbol.
