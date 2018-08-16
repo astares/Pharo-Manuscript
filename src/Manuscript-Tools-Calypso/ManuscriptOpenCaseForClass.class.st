@@ -12,6 +12,26 @@ Class {
 	#category : #'Manuscript-Tools-Calypso-Commands'
 }
 
+{ #category : #testing }
+ManuscriptOpenCaseForClass class >> canBeExecutedInContext: aBrowserContext [
+	(super canBeExecutedInContext: aBrowserContext) ifFalse: [ ^false ].
+	
+	^aBrowserContext isClassSelected 
+]
+
+{ #category : #activation }
+ManuscriptOpenCaseForClass class >> fullBrowserMenuActivation [
+	<classAnnotation>
+	
+	^CmdContextMenuActivation byRootGroupItemOrder: self itemOrder for: ClyClassContextOfFullBrowser 
+]
+
+{ #category : #execution }
+ManuscriptOpenCaseForClass >> defaultMenuIcon [
+
+	^ManuscriptIconCache manuscriptIcon 
+]
+
 { #category : #execution }
 ManuscriptOpenCaseForClass >> execute [
 	| client |

@@ -7,12 +7,6 @@ Trait {
 }
 
 { #category : #defaults }
-ManuscriptCalypsoCommandTrait classSide >> defaultMenuIcon [
-
-	^ManuscriptIconCache manuscriptIcon 
-]
-
-{ #category : #defaults }
 ManuscriptCalypsoCommandTrait classSide >> defaultMenuItemName [
 	^ 'Open case on Manuscript'
 ]
@@ -20,4 +14,10 @@ ManuscriptCalypsoCommandTrait classSide >> defaultMenuItemName [
 { #category : #defaults }
 ManuscriptCalypsoCommandTrait classSide >> itemOrder [
 	^ 21
+]
+
+{ #category : #defaults }
+ManuscriptCalypsoCommandTrait >> defaultMenuIcon [
+
+	^ManuscriptIconCache manuscriptIcon
 ]
