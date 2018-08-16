@@ -8,7 +8,7 @@ ManuscriptClient class >> getWorkingClientByAskingUser [
 	[ client isNil ] whileTrue: [
 		potentialCredentials ifNil: [ potentialCredentials := ManuscriptLoginPresenter getCredentials ].
 		potentialCredentials ifNil: [ ManuscriptUserCancelledLogin signal ].
-		[ client := self loginUser: potentialCredentials key password: potentialCredentials value.		
+		[ client := self loginUser: potentialCredentials username password: potentialCredentials password.		
 		  ManuscriptSettings 
 				useCredentials: true;
 				credentials: potentialCredentials ]
