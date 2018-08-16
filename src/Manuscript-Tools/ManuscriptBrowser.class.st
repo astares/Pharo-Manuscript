@@ -298,7 +298,7 @@ ManuscriptBrowser >> newCase [
 	self ifNotLoggedIn: [ 
 		self inform: 'Please login first'.
 		^self ].
-	pres := (ManuscriptCaseCreationPresenter openForClient: client withTemplate: 'New Case')
+	pres := (ManuscriptCaseCreationPresenter openForClient: client withTemplate: 'New Case').
 	pres inspect.
 
 ]

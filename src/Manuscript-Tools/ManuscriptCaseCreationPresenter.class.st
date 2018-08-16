@@ -375,6 +375,11 @@ ManuscriptCaseCreationPresenter >> prioritySelected [
 ]
 
 { #category : #api }
+ManuscriptCaseCreationPresenter >> projectSelected [
+	^ self projectsDropList selectedItem
+]
+
+{ #category : #api }
 ManuscriptCaseCreationPresenter >> projects: anOrderedCollectionOfString [
 	self projectsDropList
 		items: anOrderedCollectionOfString

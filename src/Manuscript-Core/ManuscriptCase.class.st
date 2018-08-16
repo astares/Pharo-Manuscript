@@ -6,7 +6,8 @@ Class {
 	#superclass : #ManuscriptObject,
 	#instVars : [
 		'title',
-		'status'
+		'status',
+		'content'
 	],
 	#category : #'Manuscript-Core-Model'
 }
@@ -30,6 +31,16 @@ ManuscriptCase class >> manuscriptIdentifier [
 { #category : #conversion }
 ManuscriptCase >> asURL [
 	^'https://pharo.manuscript.com/f/cases/', self id asString
+]
+
+{ #category : #accessing }
+ManuscriptCase >> content [
+	^ content
+]
+
+{ #category : #accessing }
+ManuscriptCase >> content: anObject [
+	content := anObject
 ]
 
 { #category : #printing }
