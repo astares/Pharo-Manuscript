@@ -21,6 +21,12 @@ ManuscriptCase class >> fromDictionary: aDictionary [
 	^case
 ]
 
+{ #category : #'private - defaults' }
+ManuscriptCase class >> manuscriptIdentifier [
+
+	^'Bug'
+]
+
 { #category : #conversion }
 ManuscriptCase >> asURL [
 	^'https://pharo.manuscript.com/f/cases/', self id asString

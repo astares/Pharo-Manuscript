@@ -3,7 +3,7 @@ A Manuscript project
 "
 Class {
 	#name : #ManuscriptProject,
-	#superclass : #ManuscriptObject,
+	#superclass : #ManuscriptNamedObject,
 	#instVars : [
 		'ownerID',
 		'isInbox'
@@ -13,10 +13,17 @@ Class {
 
 { #category : #'instance creation' }
 ManuscriptProject class >> fromDictionary: aDictionary [ 
-	^(self fromDictionary: aDictionary identifier: #sProject)
+	^(super fromDictionary: aDictionary)
+		name: (aDictionary at: #sProject);
 		ownerID: (aDictionary at: #ixPersonOwner);
 		isInbox: (aDictionary at: #fInbox)
 		yourself
+]
+
+{ #category : #'private - defaults' }
+ManuscriptProject class >> manuscriptIdentifier [
+
+	^'Project'
 ]
 
 { #category : #accessing }

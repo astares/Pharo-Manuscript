@@ -10,10 +10,12 @@ Class {
 	#category : #'Manuscript-Core-Model'
 }
 
-{ #category : #'private - instance creation' }
-ManuscriptObject class >> fromDictionary: aCollection identifier: aString [
+{ #category : #'instance creation' }
+ManuscriptObject class >> fromDictionary: aCollection [
+	|idKey|
+	idKey := ('ix', self manuscriptIdentifier) asSymbol. 
 	^(self new)
-		id: (aCollection at: aString);
+		id: (aCollection at: idKey) ;
 		yourself
 ]
 
@@ -21,6 +23,13 @@ ManuscriptObject class >> fromDictionary: aCollection identifier: aString [
 ManuscriptObject class >> isAbstract [
 
 	^self name = #ManuscriptObject
+]
+
+{ #category : #'private - defaults' }
+ManuscriptObject class >> manuscriptIdentifier [
+	"Subclasses may override the identifier for the protocol"
+	
+	^self subclassResponsibility 
 ]
 
 { #category : #comparision }
