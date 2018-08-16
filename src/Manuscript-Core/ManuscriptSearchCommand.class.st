@@ -18,16 +18,13 @@ ManuscriptSearchCommand class >> query: query [
 		yourself
 ]
 
-{ #category : #printing }
-ManuscriptSearchCommand >> printOn: aStream [
+{ #category : #conversion }
+ManuscriptSearchCommand >> asJSONString [
 
-	aStream
-		nextPutAll:
-			('{"cmd": "search",
-			   "token": "<1s>",
-			   "q": "<2s>",
-    			"cols": ["sTitle", "sStatus"]
-			}' expandMacrosWith: token asString with: query asString)
+	^'{"cmd": "search",
+	 	"token": "<1s>",
+		"q": "<2s>",
+  		"cols": ["sTitle", "sStatus"]}' expandMacrosWith: token asString with: query asString
 ]
 
 { #category : #accessing }

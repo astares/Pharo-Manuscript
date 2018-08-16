@@ -3,9 +3,8 @@ A case in FogBugz
 "
 Class {
 	#name : #ManuscriptCase,
-	#superclass : #Object,
+	#superclass : #ManuscriptObject,
 	#instVars : [
-		'id',
 		'title',
 		'status'
 	],
@@ -13,42 +12,18 @@ Class {
 }
 
 { #category : #'instance creation' }
-ManuscriptCase class >> fromDictionary: aCollection [ 
+ManuscriptCase class >> fromDictionary: aDictionary [ 
 	|case|
-	case := self new.
+	case := self fromDictionary: aDictionary identifier: #ixBug.
 	case 
-		id: (aCollection at: #ixBug) asNumber;
-		title: (aCollection at: #sTitle);
-		status: (aCollection at: #sStatus) asSymbol.
+		title: (aDictionary at: #sTitle);
+		status: (aDictionary at: #sStatus) asSymbol.
 	^case
-]
-
-{ #category : #comparision }
-ManuscriptCase >> <= anotherCase [
-
-	^self id <= anotherCase id
 ]
 
 { #category : #conversion }
 ManuscriptCase >> asURL [
 	^'https://pharo.manuscript.com/f/cases/', self id asString
-]
-
-{ #category : #comparision }
-ManuscriptCase >> hash [
-	self id ifNil: [ ^super hash ].
-	^self id hash
-]
-
-{ #category : #accessing }
-ManuscriptCase >> id [
-
-	^id
-]
-
-{ #category : #accessing }
-ManuscriptCase >> id: aNumber [
-	id := aNumber
 ]
 
 { #category : #printing }
@@ -68,6 +43,7 @@ ManuscriptCase >> status [
 
 { #category : #accessing }
 ManuscriptCase >> status: aSymbol [
+
 	status := aSymbol
 ]
 

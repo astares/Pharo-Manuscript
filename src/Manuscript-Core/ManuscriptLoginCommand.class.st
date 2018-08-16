@@ -21,6 +21,12 @@ ManuscriptLoginCommand class >> loginUser: email password: password [
 		
 ]
 
+{ #category : #conversion }
+ManuscriptLoginCommand >> asJSONString [
+
+	^'{"cmd": "logon","email": "<1s>","password": "<2s>"}' expandMacrosWith: email with: password 
+]
+
 { #category : #accessing }
 ManuscriptLoginCommand >> email [
 	^ email
@@ -48,12 +54,4 @@ ManuscriptLoginCommand >> password [
 { #category : #accessing }
 ManuscriptLoginCommand >> password: anObject [
 	password := anObject
-]
-
-{ #category : #printing }
-ManuscriptLoginCommand >> printOn: aStream [
-
-	aStream
-		nextPutAll:
-			('{"cmd": "logon","email": "<1s>","password": "<2s>"}' expandMacrosWith: email with: password)
 ]

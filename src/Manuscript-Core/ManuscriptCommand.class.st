@@ -13,6 +13,19 @@ ManuscriptCommand class >> isAbstract [
 	^self name = #ManuscriptCommand
 ]
 
+{ #category : #conversion }
+ManuscriptCommand >> asJSONString [
+
+	^self subclassResponsibility 
+]
+
+{ #category : #printing }
+ManuscriptCommand >> printOn: aStream [
+
+	aStream
+		nextPutAll: self asJSONString
+]
+
 { #category : #testing }
 ManuscriptCommand >> requiresSession [
 

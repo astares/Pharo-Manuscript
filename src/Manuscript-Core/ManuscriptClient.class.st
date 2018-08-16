@@ -61,6 +61,12 @@ ManuscriptClient >> jsonAPILocation [
 	^'https://pharo.manuscript.com/f/api/0/jsonapi'
 ]
 
+{ #category : #interacting }
+ManuscriptClient >> listProjects [
+	
+	^self queryResultOf: ManuscriptListProjectsCommand new retrieving: #projects fromType: ManuscriptProject
+]
+
 { #category : #private }
 ManuscriptClient >> login: email password: password [
 	| ston |
@@ -82,13 +88,19 @@ ManuscriptClient >> logout [
 
 { #category : #interacting }
 ManuscriptClient >> query: aString [
+	
+	^self queryResultOf: (ManuscriptSearchCommand query: aString) retrieving: #cases fromType: ManuscriptCase
+]
+
+{ #category : #interacting }
+ManuscriptClient >> queryResultOf: command retrieving: aSymbol fromType: aClass [
 
 	| res |
-	res := self executeCommand: (ManuscriptSearchCommand query: aString).
+	res := self executeCommand: command.
    (res at: #errorCode) ifNil: [
 		(res at: #data) ifNotEmpty: [:c |
-			^(c at: #cases) 
-				collect: [:each | ManuscriptCase fromDictionary: each ]]].
+			^(c at: aSymbol) 
+				collect: [:each | aClass fromDictionary: each ]]].
 	^#()
 ]
 
