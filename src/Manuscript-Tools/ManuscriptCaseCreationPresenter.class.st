@@ -95,7 +95,7 @@ ManuscriptCaseCreationPresenter >> adaptToClient: aManuscriptClient [
 		milestones: listMilestones
 		priorities: listPriorities
 		statuses: listStatuses
-		users: listPeople
+		users: listUsers
 		projects: listProjects
 		categories: listCategories).
 	UIManager default displayProgress: 'Fetching data from Manuscript' from: 0 to: todo size during: [ :bar |
@@ -112,7 +112,7 @@ ManuscriptCaseCreationPresenter >> adaptToClient: aManuscriptClient [
 				aManuscriptClient newCase: self asManuscriptCase.
 				UIManager default inform: 'Case opened.'.
 				self delete ]
-				on: FGBInvalidInput
+				on: ManuscriptInvalidInput
 				do: [ :err | UIManager default alert: err messageText title: err class name ] ].
 	self postAdaptationActions.
 ]

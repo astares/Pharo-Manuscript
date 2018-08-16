@@ -92,7 +92,9 @@ ManuscriptBrowser >> browseCase [
 { #category : #'private - events' }
 ManuscriptBrowser >> caseSearchAccept: aString [ 
 	| cases |
-	client ifNil: [ ^self ].
+	self ifNotLoggedIn: [ 
+		self inform: 'Please login first'.
+		^self ].
 	self casesModel items: OrderedCollection new.
 	World doOneCycle.
 	UIManager default showWaitCursorWhile: [ 
@@ -126,6 +128,12 @@ ManuscriptBrowser >> casesModel: anObject [
 ManuscriptBrowser >> iconProvider [
 
 	^ManuscriptIconCache 
+]
+
+{ #category : #'private - testing' }
+ManuscriptBrowser >> ifNotLoggedIn: aBlock [
+
+	^self isLoggedIn ifFalse: aBlock
 ]
 
 { #category : #'private - initialization menues' }
@@ -224,8 +232,12 @@ ManuscriptBrowser >> initializeToolBar [
 					icon: (self iconProvider manuscriptSearchIcon);
 					action: [ self search ] ].	
 					
-			 
-		 
+			group addItem: [ :item |
+				item
+					name: nil;
+					description: 'New Case';
+					icon: (self iconProvider manuscriptIcon);
+					action: [ self newCase ] ].		
 		].
 		
 	toolBar applyTo: self.
@@ -242,17 +254,23 @@ ManuscriptBrowser >> initializeWidgets [
 
 ]
 
+{ #category : #'private - testing' }
+ManuscriptBrowser >> isLoggedIn [
+
+	^client isNotNil
+]
+
 { #category : #'private - actions' }
 ManuscriptBrowser >> login [
 
-	|cr fog|
+	|cr manu|
 	cr :=	ManuscriptLoginPresenter getCredentials.
 	cr ifNil: [ ^self ].
-	fog := ManuscriptClient loginUser: cr username password: cr password.
-	fog isLoggedIn 
-		ifTrue: [ client := fog.
+	manu := ManuscriptClient loginUser: cr username password: cr password.
+	manu isLoggedIn 
+		ifTrue: [ client := manu.
 			self statusBar label: 'Connected' ]
-		ifFalse: [ self inform: fog summarizedErrors ]
+		ifFalse: [ self inform: manu summarizedErrors ]
 ]
 
 { #category : #'private - actions' }
@@ -272,6 +290,17 @@ ManuscriptBrowser >> mainMenu [
 { #category : #accessing }
 ManuscriptBrowser >> mainMenu: anObject [
 	mainMenu := anObject
+]
+
+{ #category : #'private - actions' }
+ManuscriptBrowser >> newCase [
+	|pres|
+	self ifNotLoggedIn: [ 
+		self inform: 'Please login first'.
+		^self ].
+	pres := (ManuscriptCaseCreationPresenter openForClient: client withTemplate: 'New Case')
+	pres inspect.
+
 ]
 
 { #category : #'private - actions' }

@@ -80,6 +80,12 @@ ManuscriptClient >> listMilestones [
 ]
 
 { #category : #listing }
+ManuscriptClient >> listPriorities [
+
+	^self queryListUsing: ManuscriptListPrioritiesCommand new
+]
+
+{ #category : #listing }
 ManuscriptClient >> listProjects [
 	
 	^self queryListUsing: ManuscriptListProjectsCommand new

@@ -5,7 +5,7 @@ Class {
 	#name : #ManuscriptProject,
 	#superclass : #ManuscriptNamedObject,
 	#instVars : [
-		'ownerID',
+		'defaultAssigneeId',
 		'isInbox'
 	],
 	#category : #'Manuscript-Core-Model'
@@ -13,9 +13,8 @@ Class {
 
 { #category : #'instance creation' }
 ManuscriptProject class >> fromDictionary: aDictionary [ 
-	^(super fromDictionary: aDictionary)
-		name: (aDictionary at: #sProject);
-		ownerID: (aDictionary at: #ixPersonOwner);
+	^(super fromDictionary: aDictionary)		
+		defaultAssigneeId: (aDictionary at: #ixPersonOwner);
 		isInbox: (aDictionary at: #fInbox)
 		yourself
 ]
@@ -27,6 +26,16 @@ ManuscriptProject class >> manuscriptIdentifier [
 ]
 
 { #category : #accessing }
+ManuscriptProject >> defaultAssigneeId [
+	^ defaultAssigneeId
+]
+
+{ #category : #accessing }
+ManuscriptProject >> defaultAssigneeId: anObject [
+	defaultAssigneeId := anObject
+]
+
+{ #category : #accessing }
 ManuscriptProject >> isInbox [
 	^ isInbox
 ]
@@ -34,14 +43,4 @@ ManuscriptProject >> isInbox [
 { #category : #accessing }
 ManuscriptProject >> isInbox: anObject [
 	isInbox := anObject
-]
-
-{ #category : #accessing }
-ManuscriptProject >> ownerID [
-	^ ownerID
-]
-
-{ #category : #accessing }
-ManuscriptProject >> ownerID: anObject [
-	ownerID := anObject
 ]
