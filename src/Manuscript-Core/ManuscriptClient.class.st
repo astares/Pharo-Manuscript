@@ -86,6 +86,12 @@ ManuscriptClient >> listProjects [
 ]
 
 { #category : #listing }
+ManuscriptClient >> listStatuses [
+
+	^self queryListUsing: ManuscriptListStatusesCommand new
+]
+
+{ #category : #listing }
 ManuscriptClient >> listUsers [
 
 	^self queryListUsing: ManuscriptListUsersCommand new
