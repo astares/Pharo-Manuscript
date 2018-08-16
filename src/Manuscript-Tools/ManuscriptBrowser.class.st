@@ -22,7 +22,7 @@ ManuscriptBrowser class >> contentSpec [
 	searchBarOffset := 5 + StandardFonts defaultFont height + 10.
 	^SpecLayout composed 
 		add: #casesModel origin: 0@0 corner: 1@1 offsetOrigin: 0@searchBarOffset offsetCorner: 0@0;
-		add: #caseSearchField origin: 0@0 corner: 1@0 offsetOrigin: 0@0 offsetCorner: 0@searchBarOffset
+		add: #searchField origin: 0@0 corner: 1@0 offsetOrigin: 0@0 offsetCorner: 0@searchBarOffset
 ]
 
 { #category : #spec }
@@ -99,12 +99,6 @@ ManuscriptBrowser >> caseSearchAccept: aString [
 	cases := (client query: aString) asSortedCollection ].
 	self casesModel items: cases.
 	self statusBar label: cases size asString, ' found'
-]
-
-{ #category : #'private - accessing' }
-ManuscriptBrowser >> caseSearchField [
-	
-	^casesSearchField
 ]
 
 { #category : #'private - initialization' }
@@ -283,7 +277,13 @@ ManuscriptBrowser >> mainMenu: anObject [
 { #category : #'private - actions' }
 ManuscriptBrowser >> search [
 
-	self caseSearchAccept: self caseSearchField widget searchString
+	self caseSearchAccept: self searchField widget searchString
+]
+
+{ #category : #'private - accessing' }
+ManuscriptBrowser >> searchField [
+	
+	^casesSearchField
 ]
 
 { #category : #accessing }
