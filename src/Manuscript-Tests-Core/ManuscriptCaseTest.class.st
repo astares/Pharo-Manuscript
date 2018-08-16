@@ -13,5 +13,5 @@ ManuscriptCaseTest >> testAsURL [
 	|c|
 	c := ManuscriptCase new.
 	c id: 666.
-	self assert: c asURL equals: 'https://pharo.fogbugz.com/f/cases/666'
+	self assert: c asURL equals: 'https://pharo.manuscript.com/f/cases/666'
 ]
