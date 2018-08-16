@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'query'
 	],
-	#category : #'FogBugz-Core-Commands'
+	#category : #'Manuscript-Core-Commands'
 }
 
 { #category : #'instance creation' }

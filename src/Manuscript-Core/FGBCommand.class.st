@@ -4,7 +4,7 @@ A fogbugz API command
 Class {
 	#name : #FGBCommand,
 	#superclass : #Object,
-	#category : #'FogBugz-Core-Commands'
+	#category : #'Manuscript-Core-Commands'
 }
 
 { #category : #testing }

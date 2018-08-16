@@ -8,7 +8,7 @@ Class {
 		'email',
 		'password'
 	],
-	#category : #'FogBugz-Core-Commands'
+	#category : #'Manuscript-Core-Commands'
 }
 
 { #category : #'instance creation' }

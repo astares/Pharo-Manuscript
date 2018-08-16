@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'token'
 	],
-	#category : #'FogBugz-Core-Commands'
+	#category : #'Manuscript-Core-Commands'
 }
 
 { #category : #testing }

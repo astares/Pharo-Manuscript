@@ -1,7 +1,7 @@
 Class {
 	#name : #FogBugzCaseTest,
 	#superclass : #TestCase,
-	#category : #'FogBugz-Tests-Core-Model'
+	#category : #'Manuscript-Tests-Core-Model'
 }
 
 { #category : #tests }

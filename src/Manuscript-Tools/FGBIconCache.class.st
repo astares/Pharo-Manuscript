@@ -7,7 +7,7 @@ Class {
 	#classVars : [
 		'Icons'
 	],
-	#category : #'FogBugz-Tools-Utilities'
+	#category : #'Manuscript-Tools-Utilities'
 }
 
 { #category : #icons }

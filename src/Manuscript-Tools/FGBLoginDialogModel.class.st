@@ -10,7 +10,7 @@ Class {
 		'passwordLabel',
 		'passwordField'
 	],
-	#category : #'FogBugz-Tools-Dialogs'
+	#category : #'Manuscript-Tools-Dialogs'
 }
 
 { #category : #specs }

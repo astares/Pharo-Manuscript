@@ -4,7 +4,7 @@ Logout from Fogbugz
 Class {
 	#name : #FGBLogoutCommand,
 	#superclass : #FGBTokenCommand,
-	#category : #'FogBugz-Core-Commands'
+	#category : #'Manuscript-Core-Commands'
 }
 
 { #category : #printing }

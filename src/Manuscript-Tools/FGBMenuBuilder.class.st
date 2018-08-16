@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'menu'
 	],
-	#category : #'FogBugz-Tools-Utilities'
+	#category : #'Manuscript-Tools-Utilities'
 }
 
 { #category : #'instance creation' }

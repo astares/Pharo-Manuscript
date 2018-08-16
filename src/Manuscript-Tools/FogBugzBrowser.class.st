@@ -12,7 +12,7 @@ Class {
 		'statusBar',
 		'casesSearchField'
 	],
-	#category : #'FogBugz-Tools-UI'
+	#category : #'Manuscript-Tools-UI'
 }
 
 { #category : #spec }

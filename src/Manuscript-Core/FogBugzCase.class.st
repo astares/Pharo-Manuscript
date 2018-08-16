@@ -9,7 +9,7 @@ Class {
 		'title',
 		'status'
 	],
-	#category : #'FogBugz-Core-Model'
+	#category : #'Manuscript-Core-Model'
 }
 
 { #category : #'instance creation' }

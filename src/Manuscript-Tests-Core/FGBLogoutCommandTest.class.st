@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'command'
 	],
-	#category : #'FogBugz-Tests-Core-Commands'
+	#category : #'Manuscript-Tests-Core-Commands'
 }
 
 { #category : #running }

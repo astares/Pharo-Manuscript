@@ -12,7 +12,7 @@ Class {
 		'token',
 		'errors'
 	],
-	#category : #'FogBugz-Core-Base'
+	#category : #'Manuscript-Core-Base'
 }
 
 { #category : #examples }
