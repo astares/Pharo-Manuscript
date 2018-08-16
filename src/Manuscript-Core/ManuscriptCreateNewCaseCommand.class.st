@@ -1,3 +1,6 @@
+"
+Create a new case
+"
 Class {
 	#name : #ManuscriptCreateNewCaseCommand,
 	#superclass : #ManuscriptTokenCommand,
