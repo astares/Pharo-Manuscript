@@ -7,7 +7,13 @@ Class {
 	#instVars : [
 		'title',
 		'status',
-		'content'
+		'content',
+		'project',
+		'category',
+		'area',
+		'milestone',
+		'assignee',
+		'priority'
 	],
 	#category : #'Manuscript-Core-Model'
 }
@@ -28,9 +34,39 @@ ManuscriptCase class >> manuscriptIdentifier [
 	^'Bug'
 ]
 
+{ #category : #accessing }
+ManuscriptCase >> area [
+	^ area
+]
+
+{ #category : #accessing }
+ManuscriptCase >> area: anObject [
+	area := anObject
+]
+
 { #category : #conversion }
 ManuscriptCase >> asURL [
 	^'https://pharo.manuscript.com/f/cases/', self id asString
+]
+
+{ #category : #accessing }
+ManuscriptCase >> assignee [
+	^ assignee
+]
+
+{ #category : #accessing }
+ManuscriptCase >> assignee: anObject [
+	assignee := anObject
+]
+
+{ #category : #accessing }
+ManuscriptCase >> category [
+	^ category
+]
+
+{ #category : #accessing }
+ManuscriptCase >> category: anObject [
+	category := anObject
 ]
 
 { #category : #accessing }
@@ -43,6 +79,16 @@ ManuscriptCase >> content: anObject [
 	content := anObject
 ]
 
+{ #category : #accessing }
+ManuscriptCase >> milestone [
+	^ milestone
+]
+
+{ #category : #accessing }
+ManuscriptCase >> milestone: anObject [
+	milestone := anObject
+]
+
 { #category : #printing }
 ManuscriptCase >> printOn: aStream [
 
@@ -50,6 +96,26 @@ ManuscriptCase >> printOn: aStream [
 		nextPutAll: self id asString;
 		nextPutAll: ' - ';
 		nextPutAll: self title asString
+]
+
+{ #category : #accessing }
+ManuscriptCase >> priority [
+	^ priority
+]
+
+{ #category : #accessing }
+ManuscriptCase >> priority: anObject [
+	priority := anObject
+]
+
+{ #category : #accessing }
+ManuscriptCase >> project [
+	^ project
+]
+
+{ #category : #accessing }
+ManuscriptCase >> project: anObject [
+	project := anObject
 ]
 
 { #category : #accessing }

@@ -109,7 +109,7 @@ ManuscriptCaseCreationPresenter >> adaptToClient: aManuscriptClient [
 	submitButton
 		action: [ 
 			[
-				aManuscriptClient newCase: self asManuscriptCase.
+				aManuscriptClient createNewCase: self asManuscriptCase.
 				UIManager default inform: 'Case opened.'.
 				self delete ]
 				on: ManuscriptInvalidInput

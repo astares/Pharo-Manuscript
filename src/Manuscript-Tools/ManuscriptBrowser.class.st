@@ -237,7 +237,13 @@ ManuscriptBrowser >> initializeToolBar [
 					name: nil;
 					description: 'New Case';
 					icon: (self iconProvider manuscriptIcon);
-					action: [ self newCase ] ].		
+					action: [ self newCase ] ].	
+			group addItem: [ :item |
+				item
+					name: nil;
+					description: 'Settings';
+					icon: (self iconNamed: #configuration);
+					action: [ self openSettings ] ].							
 		].
 		
 	toolBar applyTo: self.
@@ -301,6 +307,19 @@ ManuscriptBrowser >> newCase [
 	pres := (ManuscriptCaseCreationPresenter openForClient: client withTemplate: 'New Case').
 	pres inspect.
 
+]
+
+{ #category : #'private - actions' }
+ManuscriptBrowser >> openSettings [
+	| browser path |
+	browser := SettingBrowser new
+		changePackageSet:
+			{#'Manuscript-Core' asPackage.
+			 #'Manuscript-Tools' asPackage};
+		yourself.
+	window := browser open.
+	path := (window submorphs detect: [ :each | (each isKindOf: MorphTreeMorph)  ]) nodeList.
+	browser expandNodePath: path first contents first contents first path.
 ]
 
 { #category : #'private - actions' }

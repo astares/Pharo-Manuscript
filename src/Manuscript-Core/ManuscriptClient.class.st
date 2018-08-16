@@ -32,6 +32,20 @@ ManuscriptClient class >> loginUser: email password: password [
 		yourself
 ]
 
+{ #category : #creational }
+ManuscriptClient >> createNewCase: aManuscriptCase [
+
+	| rawResult |
+	rawResult := self executeCommand: (
+							FGBNewCaseCommand new
+									case: aManuscriptCase;
+									yourself).
+	(rawResult at: #errorCode)
+		ifNil: [ ^ self ].
+	
+	self error: ((rawResult at: #errors) first at: #message)
+]
+
 { #category : #'private - accessing' }
 ManuscriptClient >> errors [
 
