@@ -115,17 +115,20 @@ ManuscriptClient >> login: email password: password [
 
 { #category : #authentication }
 ManuscriptClient >> logout [
-
 	| res |
 	res := self executeCommand: ManuscriptLogoutCommand new.
-	(res at: #errorCode) isNil ifTrue: [token := nil. ^self].
+	(res at: #errorCode) isNil
+		ifTrue: [ token := nil.
+			^ self ].
 	self readErrorsFrom: res
 ]
 
 { #category : #interacting }
 ManuscriptClient >> query: aString [
-	
-	^self queryResultOf: (ManuscriptSearchCommand query: aString) retrieving: #cases fromType: ManuscriptCase
+	^ self
+		queryResultOf: (ManuscriptSearchCommand query: aString)
+		retrieving: #cases
+		fromType: ManuscriptCase
 ]
 
 { #category : #'private - utilities' }
@@ -136,14 +139,12 @@ ManuscriptClient >> queryListUsing: aManuscriptListCommand [
 
 { #category : #interacting }
 ManuscriptClient >> queryResultOf: command retrieving: aSymbol fromType: aClass [
-
 	| res |
 	res := self executeCommand: command.
-   (res at: #errorCode) ifNil: [
-		(res at: #data) ifNotEmpty: [:c |
-			^(c at: aSymbol) 
-				collect: [:each | aClass fromDictionary: each ]]].
-	^#()
+	(res at: #errorCode)
+		ifNil: [ (res at: #data)
+				ifNotEmpty: [ :c | ^ (c at: aSymbol) collect: [ :each | aClass fromDictionary: each ] ] ].
+	^ #()
 ]
 
 { #category : #'private - utilities' }
