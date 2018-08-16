@@ -58,7 +58,7 @@ ManuscriptClient >> isLoggedIn [
 
 { #category : #'private - accessing' }
 ManuscriptClient >> jsonAPILocation [
-	^'https://pharo.fogbugz.com/f/api/0/jsonapi'
+	^'https://pharo.manuscript.com/f/api/0/jsonapi'
 ]
 
 { #category : #private }
