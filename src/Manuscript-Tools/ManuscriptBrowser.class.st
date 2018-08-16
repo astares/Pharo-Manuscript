@@ -169,7 +169,7 @@ ManuscriptBrowser >> initialExtent [
 { #category : #'private - initialization' }
 ManuscriptBrowser >> initializeCasesModel [
 		
-	casesModel := self instantiate: IconListModel.
+	casesModel := self instantiate: FastTableModel.
 	casesModel 
  		items: SortedCollection new;
 		displayBlock: [ :case | case printString ];
