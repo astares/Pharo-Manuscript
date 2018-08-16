@@ -137,13 +137,17 @@ ManuscriptBrowser >> ifNotLoggedIn: aBlock [
 ]
 
 { #category : #'private - initialization menues' }
-ManuscriptBrowser >> initalQueryMenu [
+ManuscriptBrowser >> initalCaseMenu [
 	|builder|
 	builder := ManuscriptMenuBuilder new.
 	builder
 		addItem: 'Search'
 		icon: self iconProvider manuscriptSearchIcon 
 		action: [ self search ].
+	builder
+		addItem: 'New Case'
+		icon: self iconProvider manuscriptIcon 
+		action: [ self newCase ].		
 	^builder menu	
 ]
 
@@ -186,7 +190,7 @@ ManuscriptBrowser >> initializeMainMenu [
 	mainMenu := MenuModel new.
 	builder := ManuscriptMenuBuilder forMenu: mainMenu.
 	builder addItem: 'Manuscript' icon: nil subMenu: self initalSessionMenu.
-	builder addItem: 'Query' icon: nil subMenu: self initalQueryMenu.						
+	builder addItem: 'Case' icon: nil subMenu: self initalCaseMenu.						
 	"builder addItem: 'Help' icon: nil subMenu: self initalHelpMenu.	"	
 ]
 
