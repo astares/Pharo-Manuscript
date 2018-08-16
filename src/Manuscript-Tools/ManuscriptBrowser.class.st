@@ -136,7 +136,18 @@ ManuscriptBrowser >> iconProvider [
 ]
 
 { #category : #'private - initialization menues' }
-ManuscriptBrowser >> initalFogBugzMenu [
+ManuscriptBrowser >> initalQueryMenu [
+	|builder|
+	builder := ManuscriptMenuBuilder new.
+	builder
+		addItem: 'Search'
+		icon: self iconProvider manuscriptSearchIcon 
+		action: [ self search ].
+	^builder menu	
+]
+
+{ #category : #'private - initialization menues' }
+ManuscriptBrowser >> initalSessionMenu [
 	|builder|
 	builder := ManuscriptMenuBuilder new.
 	builder
@@ -147,17 +158,6 @@ ManuscriptBrowser >> initalFogBugzMenu [
 		addItem: 'Logout'
 		icon: self iconProvider manuscriptLogoutIcon 
 		action: [ self logout ].	
-	^builder menu	
-]
-
-{ #category : #'private - initialization menues' }
-ManuscriptBrowser >> initalQueryMenu [
-	|builder|
-	builder := ManuscriptMenuBuilder new.
-	builder
-		addItem: 'Search'
-		icon: self iconProvider manuscriptSearchIcon 
-		action: [ self search ].
 	^builder menu	
 ]
 
@@ -184,7 +184,7 @@ ManuscriptBrowser >> initializeMainMenu [
 	| builder |
 	mainMenu := MenuModel new.
 	builder := ManuscriptMenuBuilder forMenu: mainMenu.
-	builder addItem: 'FogBugz' icon: nil subMenu: self initalFogBugzMenu.
+	builder addItem: 'FogBugz' icon: nil subMenu: self initalSessionMenu.
 	builder addItem: 'Query' icon: nil subMenu: self initalQueryMenu.						
 	"builder addItem: 'Help' icon: nil subMenu: self initalHelpMenu.	"	
 ]
