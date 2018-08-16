@@ -27,6 +27,14 @@ ManuscriptLoginCommandTest >> testInstanceCreation [
 ]
 
 { #category : #tests }
+ManuscriptLoginCommandTest >> testInstanceCreationEmpty [
+
+	| cmd |
+	cmd := ManuscriptLoginCommand new.
+	self assert: cmd printString equals: '{"cmd": "logon","email": "","password": ""}'
+]
+
+{ #category : #tests }
 ManuscriptLoginCommandTest >> testRequiresSession [
 
 	self deny: command requiresSession 

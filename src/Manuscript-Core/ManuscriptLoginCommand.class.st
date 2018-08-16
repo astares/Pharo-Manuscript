@@ -31,6 +31,15 @@ ManuscriptLoginCommand >> email: anObject [
 	email := anObject
 ]
 
+{ #category : #initialization }
+ManuscriptLoginCommand >> initialize [
+
+	super initialize.
+	self 
+		email: '';
+		password: ''
+]
+
 { #category : #accessing }
 ManuscriptLoginCommand >> password [
 	^ password
