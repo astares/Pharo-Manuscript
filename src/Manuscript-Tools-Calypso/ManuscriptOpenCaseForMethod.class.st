@@ -1,3 +1,6 @@
+"
+Open a case for a method
+"
 Class {
 	#name : #ManuscriptOpenCaseForMethod,
 	#superclass : #ClyBrowserCommand,
