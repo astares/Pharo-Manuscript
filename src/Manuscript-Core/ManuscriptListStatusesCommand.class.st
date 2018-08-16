@@ -1,3 +1,6 @@
+"
+List available statuses
+"
 Class {
 	#name : #ManuscriptListStatusesCommand,
 	#superclass : #ManuscriptListCommand,

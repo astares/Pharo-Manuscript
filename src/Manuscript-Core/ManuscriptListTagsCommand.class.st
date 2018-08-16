@@ -1,3 +1,6 @@
+"
+List available tags
+"
 Class {
 	#name : #ManuscriptListTagsCommand,
 	#superclass : #ManuscriptListCommand,
