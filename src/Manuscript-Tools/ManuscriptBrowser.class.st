@@ -112,7 +112,7 @@ ManuscriptBrowser >> casesListMenu: aMenu [
 
 	casesModel selectedItem ifNil: [ ^nil ].
 	aMenu target: self.
-	aMenu addTitle:  'Case'.
+	aMenu addTitle: 'Case' translated.
 	aMenu add: 'Browse online' selector: #browseCase.
 	^aMenu
 ]
