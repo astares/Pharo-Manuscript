@@ -68,6 +68,12 @@ ManuscriptClient >> listCategories [
 ]
 
 { #category : #listing }
+ManuscriptClient >> listMilestones [
+	
+	^self queryResultOf: ManuscriptListMilestonesCommand new retrieving: #fixfors fromType: ManuscriptMilestone
+]
+
+{ #category : #listing }
 ManuscriptClient >> listProjects [
 	
 	^self queryResultOf: ManuscriptListProjectsCommand new retrieving: #projects fromType: ManuscriptProject
