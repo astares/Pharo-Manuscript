@@ -10,7 +10,7 @@ Class {
 		'filteringBlock',
 		'items'
 	],
-	#category : #'Manuscript-Tools-Components'
+	#category : #'Manuscript-Tools-Widgets'
 }
 
 { #category : #specs }
@@ -83,7 +83,33 @@ ManuscriptLabeledDropList >> label [
 	^ label
 ]
 
+{ #category : #api }
+ManuscriptLabeledDropList >> label: aString [
+	self label
+		label: aString
+]
+
+{ #category : #api }
+ManuscriptLabeledDropList >> resetFilter [
+	self filteringBlock: self defaultFilteringBlock
+]
+
 { #category : #accessing }
 ManuscriptLabeledDropList >> selectedItem [
 	^ self dropList selectedItem
+]
+
+{ #category : #api }
+ManuscriptLabeledDropList >> selectedItem: anObject [
+	self dropList setSelectedItem: anObject
+]
+
+{ #category : #api }
+ManuscriptLabeledDropList >> setSelectedItem: anObject [
+	self dropList setSelectedItem: anObject
+]
+
+{ #category : #api }
+ManuscriptLabeledDropList >> whenSelectedItemChanged: aBlockClosure [ 
+	self dropList whenSelectedItemChanged: aBlockClosure 
 ]
