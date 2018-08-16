@@ -92,6 +92,12 @@ ManuscriptClient >> listStatuses [
 ]
 
 { #category : #listing }
+ManuscriptClient >> listTags [
+
+	^self queryListUsing: ManuscriptListTagsCommand new
+]
+
+{ #category : #listing }
 ManuscriptClient >> listUsers [
 
 	^self queryListUsing: ManuscriptListUsersCommand new
