@@ -104,7 +104,7 @@ ManuscriptLoginDialogModel >> passwordLabel: anObject [
 
 { #category : #defaults }
 ManuscriptLoginDialogModel >> title [
-  ^ 'Login'
+  ^ 'Manuscript Login'
 ]
 
 { #category : #accessing }
