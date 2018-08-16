@@ -63,7 +63,7 @@ ManuscriptBrowser class >> icon [
 ManuscriptBrowser class >> menuCommandOn: aBuilder [
 	<worldMenu> 		 
 		
-	(aBuilder item: #'FogBugz Browser')	 	 
+	(aBuilder item: #'Manuscript Browser')	 	 
 		action: [ self open ]; 
 		parent: #Tools;
 		icon: self icon.
